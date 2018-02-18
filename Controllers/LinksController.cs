@@ -34,7 +34,7 @@ namespace Angular2WebpackVisualStudio.Controller
             return await _linksRepository.GetAllLinks();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetLink")]
         public Task<Link> GetLink(string id)
         {
 
@@ -49,17 +49,24 @@ namespace Angular2WebpackVisualStudio.Controller
 
         // POST api/links
         [HttpPost]
-        public void Post([FromBody] Link value)
+        public IActionResult Post([FromBody] Link value)
         {
-
-            _linksRepository.AddLink(new Link()
+            if (value == null)
             {
-                Desc = value.Desc,
-                Url = value.Url,
-                UrlDesc = value.UrlDesc,
-                Name = value.Name
+                return BadRequest();
             }
-            );
+
+            var newLink = new Link()
+                {
+                    desc = value.desc,
+                    url = value.url,
+                    urldesc = value.urldesc,
+                    name = value.name
+                };
+
+            var x = _linksRepository.AddLink(newLink);
+
+            return CreatedAtRoute("GetLink", new { id = newLink.Id }, newLink);
         }
 
         // PUT api/links/5

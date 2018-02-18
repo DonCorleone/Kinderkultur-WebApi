@@ -66,10 +66,10 @@ namespace Angular2WebpackVisualStudio.Repositories.Links
         public async Task<ReplaceOneResult> UpdateLinkDocument(string id, Link body)
         {
             var item = await GetLink(id) ?? new Link();
-            item.Desc = body.Desc;
-            item.Name = body.Name;
-            item.Url = body.Url;
-            item.UrlDesc = body.UrlDesc;
+            item.desc = body.desc;
+            item.name = body.name;
+            item.url = body.url;
+            item.urldesc = body.urldesc;
             
             return await UpdateLink(id, item);
         }

@@ -9,12 +9,12 @@ namespace Angular2WebpackVisualStudio.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
          [BsonElement("name")]
-        public string Name {get;set;}
+        public string name {get;set;}
          [BsonElement("desc")]
-        public string Desc {get;set;}
+        public string desc {get;set;}
          [BsonElement("url")]
-        public string Url {get;set;}
+        public string url {get;set;}
          [BsonElement("urldesc")]
-        public string UrlDesc {get;set;}
+        public string urldesc {get;set;}
     }
 }
