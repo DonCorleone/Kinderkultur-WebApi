@@ -10,7 +10,6 @@ using Angular2WebpackVisualStudio.Repositories.Things;
 using Angular2WebpackVisualStudio.Repositories.Links;
 using Angular2WebpackVisualStudio.Models;
 using Angular2WebpackVisualStudio.Data;
-using Angular2WebpackVisualStudio.Repositories.Notes;
 namespace Angular2WebpackVisualStudio
 {
     public class Startup
@@ -49,7 +48,6 @@ namespace Angular2WebpackVisualStudio
                 options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             });
-            services.AddTransient<INoteRepository, NoteRepository>();
             services.AddTransient<ILinkRepository, LinkRepository>();
         }
 

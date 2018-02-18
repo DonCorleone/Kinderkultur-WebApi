@@ -72,10 +72,23 @@ namespace Angular2WebpackVisualStudio.Controller
         }
 
              // DELETE api/notes/23243423
+        // [HttpDelete("{id}")]
+        // public void Delete(string id)
+        // {
+        //     _linksRepository.RemoveLink(id);
+        // }
+
         [HttpDelete("{id}")]
-        public void Delete(string id)
+        public IActionResult Delete(string id)
         {
+            var todo = _linksRepository.GetLink(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
             _linksRepository.RemoveLink(id);
+            return new NoContentResult();
         }
     }
 }
