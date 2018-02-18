@@ -7,6 +7,7 @@ using Angular2WebpackVisualStudio.Repositories.Links;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Angular2WebpackVisualStudio.Controller
 {
@@ -63,9 +64,11 @@ namespace Angular2WebpackVisualStudio.Controller
 
         // PUT api/links/5
         [HttpPut("{id}")]
-        public void Put(string id, [FromBody]Link value)
+        public IActionResult Update(string id, [FromBody] Link value)
         {
+         
             _linksRepository.UpdateLinkDocument(id, value);
+            return new NoContentResult();
         }
 
              // DELETE api/notes/23243423
