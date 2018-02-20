@@ -16,5 +16,7 @@ namespace Angular2WebpackVisualStudio.Models
         public string url {get;set;}
          [BsonElement("urldesc")]
         public string urldesc {get;set;}
+
+        public string hostName {get;}
     }
 }
