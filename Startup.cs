@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using KinderKulturServer.Repositories.Things;
 using KinderKulturServer.Repositories.Links;
 using KinderKulturServer.Models;
 using KinderKulturServer.Data;
+using KinderKulturServer.Extensions;
+
 namespace KinderKulturServer
 {
     public class Startup
@@ -30,17 +31,9 @@ namespace KinderKulturServer
         public void ConfigureServices(IServiceCollection services)
         {
             // Add service and create Policy with options 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                  builder => builder.AllowAnyOrigin()
-                                    .AllowAnyMethod()
-                                    .AllowAnyHeader()
-                                    .AllowCredentials());
-            });
+            services.ConfigureCors();
 
             // Add framework services.
-            services.AddSingleton<IThingsRepository, ThingsRepository>();
             services.AddMvc();
             services.Configure<Settings>(options =>
             {

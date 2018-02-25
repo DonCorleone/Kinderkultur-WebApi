@@ -98,5 +98,33 @@ namespace KinderKulturServer.Controller
             _linksRepository.RemoveLink(id);
             return new NoContentResult();
         }
+
+        [HttpPatch("{id:int}")]
+        public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<Link> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                return BadRequest();
+            }
+
+            Task<Link> existingEntity = _linksRepository.GetLink(id.ToString());
+
+            if (existingEntity == null)
+            {
+                return NotFound();
+            }
+
+            Task<Link> thing = existingEntity;
+            patchDoc.ApplyTo(thing.Result, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = _linksRepository.UpdateLink(id.ToString(), thing.Result);
+
+            return Ok(result.Result);
+        }
     }
 }
