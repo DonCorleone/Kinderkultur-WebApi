@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using Angular2WebpackVisualStudio.Models;
-using Angular2WebpackVisualStudio.Repositories.Things;
+using KinderKulturServer.Models;
+using KinderKulturServer.Repositories.Things;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Angular2WebpackVisualStudio.Controller
+namespace KinderKulturServer.Controller
 {
     [Route("api/[controller]")]
     public class ThingsController : Microsoft.AspNetCore.Mvc.Controller

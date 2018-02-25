@@ -2,9 +2,9 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Angular2WebpackVisualStudio.Models;
+using KinderKulturServer.Models;
 
-namespace Angular2WebpackVisualStudio.Repositories.Things
+namespace KinderKulturServer.Repositories.Things
 {
     public class ThingsRepository : IThingsRepository
     {

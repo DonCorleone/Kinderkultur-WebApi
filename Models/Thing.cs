@@ -1,4 +1,4 @@
-﻿namespace Angular2WebpackVisualStudio.Models
+﻿namespace KinderKulturServer.Models
 {
     public class Thing
     {

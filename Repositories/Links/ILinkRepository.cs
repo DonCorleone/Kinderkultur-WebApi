@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Angular2WebpackVisualStudio.Models;
+using KinderKulturServer.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Angular2WebpackVisualStudio.Repositories.Links
+namespace KinderKulturServer.Repositories.Links
 {
     public interface ILinkRepository
     {

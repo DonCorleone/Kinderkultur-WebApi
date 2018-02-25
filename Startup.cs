@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Angular2WebpackVisualStudio.Repositories.Things;
-using Angular2WebpackVisualStudio.Repositories.Links;
-using Angular2WebpackVisualStudio.Models;
-using Angular2WebpackVisualStudio.Data;
-namespace Angular2WebpackVisualStudio
+using KinderKulturServer.Repositories.Things;
+using KinderKulturServer.Repositories.Links;
+using KinderKulturServer.Models;
+using KinderKulturServer.Data;
+namespace KinderKulturServer
 {
     public class Startup
     {
@@ -41,7 +41,6 @@ namespace Angular2WebpackVisualStudio
 
             // Add framework services.
             services.AddSingleton<IThingsRepository, ThingsRepository>();
-           // services.AddSingleton<ILinkRepository, LinkRepository>();
             services.AddMvc();
             services.Configure<Settings>(options =>
             {

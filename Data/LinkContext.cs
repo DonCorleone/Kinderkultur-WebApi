@@ -1,8 +1,8 @@
-using Angular2WebpackVisualStudio.Models;
+using KinderKulturServer.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace Angular2WebpackVisualStudio.Data
+namespace KinderKulturServer.Data
 {
     public class LinkContext
     {

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Angular2WebpackVisualStudio.Infrastructure;
-using Angular2WebpackVisualStudio.Models;
-using Angular2WebpackVisualStudio.Repositories.Links;
+using KinderKulturServer.Infrastructure;
+using KinderKulturServer.Models;
+using KinderKulturServer.Repositories.Links;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Angular2WebpackVisualStudio.Controller
+namespace KinderKulturServer.Controller
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
@@ -58,10 +58,11 @@ namespace Angular2WebpackVisualStudio.Controller
 
             var newLink = new Link()
                 {
+                    name = value.name,
+                    title = value.title,
                     desc = value.desc,
                     url = value.url,
-                    urldesc = value.urldesc,
-                    name = value.name
+                    urldesc = value.urldesc
                 };
 
             var x = _linksRepository.AddLink(newLink);

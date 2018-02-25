@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Angular2WebpackVisualStudio.Models;
+using KinderKulturServer.Models;
 
-namespace Angular2WebpackVisualStudio.Repositories.Things
+namespace KinderKulturServer.Repositories.Things
 {
     public interface IThingsRepository
     {

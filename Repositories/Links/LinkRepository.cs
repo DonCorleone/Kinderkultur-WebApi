@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Angular2WebpackVisualStudio.Data;
-using Angular2WebpackVisualStudio.Models;
+using KinderKulturServer.Data;
+using KinderKulturServer.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Angular2WebpackVisualStudio.Repositories.Links
+namespace KinderKulturServer.Repositories.Links
 {
     public class LinkRepository : ILinkRepository
     {
@@ -66,8 +66,9 @@ namespace Angular2WebpackVisualStudio.Repositories.Links
         public async Task<ReplaceOneResult> UpdateLinkDocument(string id, Link body)
         {
             var item = await GetLink(id) ?? new Link();
-            item.desc = body.desc;
             item.name = body.name;
+            item.title = body.title;
+            item.desc = body.desc;
             item.url = body.url;
             item.urldesc = body.urldesc;
             
