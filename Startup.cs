@@ -10,13 +10,20 @@ using KinderKulturServer.Repositories.Links;
 using KinderKulturServer.Models;
 using KinderKulturServer.Data;
 using KinderKulturServer.Extensions;
+using System.IO;
+using NLog.Extensions.Logging;
+using KinderKulturServer.Contracts;
+using LoggerService;
 
 namespace KinderKulturServer
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+
+            loggerFactory.ConfigureNLog(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+            
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -41,6 +48,8 @@ namespace KinderKulturServer
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             });
             services.AddTransient<ILinkRepository, LinkRepository>();
+
+            services.AddSingleton<ILoggerManager, LoggerManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
