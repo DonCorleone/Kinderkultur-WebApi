@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Cors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -42,6 +43,7 @@ namespace KinderKulturServer
 
             // Add framework services.
             services.AddMvc();
+            services.AddApiVersioning();
             services.Configure<Settings>(options =>
             {
                 options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;

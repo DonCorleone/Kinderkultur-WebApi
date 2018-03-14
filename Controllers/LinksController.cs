@@ -13,8 +13,9 @@ using NLog.Extensions.Logging;
 
 namespace KinderKulturServer.Controller
 {
+   [ApiVersion( "1.0" )]
    [Produces("application/json")]
-   [Route("api/[controller]")]
+   [Route( "api/v{version:apiVersion}/[controller]" )]
    public class LinksController : Microsoft.AspNetCore.Mvc.Controller
    {
       private readonly ILinkRepository _linksRepository;
