@@ -12,8 +12,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AngularASPNETCore2WebApiAuth.Controllers
 {
-    [Authorize(Policy = "ApiUser")]
-    [Route("api/[controller]/[action]")]
+    [Authorize(Policy = "ApiUser")]    
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]/[action]")]
     public class DashboardController : Controller
     {
         private readonly ClaimsPrincipal _caller;

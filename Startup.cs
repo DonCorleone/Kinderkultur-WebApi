@@ -157,7 +157,8 @@ namespace KinderKulturServer
 
             var angularRoutes = new[] {
                  "/home",
-                 "/links"
+                 "/links",
+                 "/dashboard"
              };
 
             app.Use(async (context, next) =>

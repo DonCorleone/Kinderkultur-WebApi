@@ -15,7 +15,8 @@ using Newtonsoft.Json;
 
 namespace KinderKulturServer.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]/[action]")]
     public class ExternalAuthController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ApplicationDbContext _appDbContext;

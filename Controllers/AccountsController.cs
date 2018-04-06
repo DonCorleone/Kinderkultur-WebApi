@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KinderKulturServer.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AccountsController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ApplicationDbContext _appDbContext;
