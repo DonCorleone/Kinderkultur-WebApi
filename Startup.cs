@@ -161,6 +161,8 @@ namespace KinderKulturServer
                  "/dashboard"
              };
 
+            app.UseAuthentication();
+
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
@@ -191,7 +193,6 @@ namespace KinderKulturServer
                                         }
                                     });
                 });
-            app.UseAuthentication();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using KinderKulturServer.Contracts;
 using KinderKulturServer.Infrastructure;
 using KinderKulturServer.Models;
 using KinderKulturServer.Repositories.Links;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
@@ -13,20 +16,27 @@ using NLog.Extensions.Logging;
 
 namespace KinderKulturServer.Controller
 {
+    [Authorize(Policy = "ApiUser")]
     [ApiVersion("1.0")]
     [Produces("application/json")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class LinksController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly ILinkRepository _linksRepository;
+        private readonly ClaimsPrincipal _caller;
+
         private ILoggerManager _logger;
 
-        public LinksController(ILinkRepository linksRepository, ILoggerManager logger)
+        public LinksController(ILinkRepository linksRepository, ILoggerManager logger, IHttpContextAccessor httpContextAccessor)
         {
             _linksRepository = linksRepository;
             _logger = logger;
+            _caller = httpContextAccessor.HttpContext.User;
         }
 
+
+    
+        [AllowAnonymous]    
         [NoCache]
         [HttpGet]
         public Task<IEnumerable<Link>> Get()
@@ -35,10 +45,10 @@ namespace KinderKulturServer.Controller
             _logger.LogDebug("Here is debug message from our values controller.");
             _logger.LogWarn("Here is warn message from our values controller.");
             _logger.LogError("Here is error message from our values controller.");
-            return GetLinkInternal();
+            return GetAllLinksInternal();
         }
 
-        private async Task<IEnumerable<Link>> GetLinkInternal()
+        private async Task<IEnumerable<Link>> GetAllLinksInternal()
         {
             return await _linksRepository.GetAllLinks();
         }
