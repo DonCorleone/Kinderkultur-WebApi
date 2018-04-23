@@ -10780,3 +10780,753 @@ File name: 'NLog.Extended, Culture=neutral, PublicKeyToken=null'
 2018-04-16 21:59:58.8814 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
 2018-04-16 21:59:58.8823 Trace File Target[logfile] has 2 layouts
 2018-04-16 21:59:58.9585 Debug Watching path '/Users/dev/Documents/_Projektli/KinderKultur_Docker/Server' filter 'nlog.config' for changes.
+2018-04-18 06:46:22.6311 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2018-04-18 06:46:22.8853 Debug Search for auto loading files, location: /Users/dev/.nuget/packages/nlog/4.5.0-rc06/lib/netstandard2.0
+2018-04-18 06:46:22.8895 Debug Search for auto loading files, location: /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/bin/Debug/netcoreapp2.0
+2018-04-18 06:46:22.8895 Debug Start auto loading, location: /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/bin/Debug/netcoreapp2.0
+2018-04-18 06:46:22.8920 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2018-04-18 06:46:22.8920 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2018-04-18 06:46:22.8926 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2018-04-18 06:46:22.8926 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2018-04-18 06:46:22.8937 Debug Auto loading done
+2018-04-18 06:46:22.8947 Info Message Template Auto Format enabled
+2018-04-18 06:46:22.9021 Info Loading assembly: NLog.Extended
+2018-04-18 06:46:23.0085 Error Error loading extensions. Exception: System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+
+File name: 'NLog.Extended, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.XmlLoggingConfiguration.ParseExtensionWithAssembly(String assemblyName, String prefix)
+
+
+2018-04-18 06:46:23.0171 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.XmlLoggingConfiguration.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2018-04-18 06:46:23.0514 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.0567 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-18 06:46:23.0624 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2018-04-18 06:46:23.1227 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2018-04-18 06:46:23.1227 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1227 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.1241 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1241 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-18 06:46:23.1247 Trace  Scanning Property Culture '' System.Globalization
+2018-04-18 06:46:23.1272 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-18 06:46:23.1275 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-18 06:46:23.1275 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.1288 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.1288 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1288 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2018-04-18 06:46:23.1296 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1296 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-18 06:46:23.1564 Debug Setting 'FileTarget.name' to 'logfile'
+2018-04-18 06:46:23.1570 Debug Setting 'FileTarget.fileName' to '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-18 06:46:23.1570 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1575 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-18 06:46:23.1586 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2018-04-18 06:46:23.1586 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1586 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-18 06:46:23.1586 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2018-04-18 06:46:23.1586 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2018-04-18 06:46:23.1596 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1596 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.1596 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1596 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-18 06:46:23.1596 Trace  Scanning Property Culture '' System.Globalization
+2018-04-18 06:46:23.1607 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-18 06:46:23.1607 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-18 06:46:23.1607 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.1607 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.1607 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-18 06:46:23.1616 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-18 06:46:23.1625 Info Adding target File Target[logfile]
+2018-04-18 06:46:23.1643 Debug Registered target logfile: NLog.Targets.FileTarget
+2018-04-18 06:46:23.1652 Trace ParseRulesElement
+2018-04-18 06:46:23.1709 Info Configured from an XML element in /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/nlog.config...
+2018-04-18 06:46:23.1769 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2018-04-18 06:46:23.1789 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2018-04-18 06:46:23.1818 Debug --- NLog configuration dump ---
+2018-04-18 06:46:23.1818 Debug Targets:
+2018-04-18 06:46:23.1818 Debug File Target[logfile]
+2018-04-18 06:46:23.1818 Debug Rules:
+2018-04-18 06:46:23.1846 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2018-04-18 06:46:23.1846 Debug --- End of NLog configuration dump ---
+2018-04-18 06:46:23.1874 Trace FindReachableObject<System.Object>:
+2018-04-18 06:46:23.1877 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2018-04-18 06:46:23.1877 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2018-04-18 06:46:23.1877 Trace  Scanning FileTarget 'File Target[logfile]'
+2018-04-18 06:46:23.1888 Trace   Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-18 06:46:23.1888 Trace   Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-18 06:46:23.1888 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.1888 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.1896 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-18 06:46:23.1896 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.1908 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-18 06:46:23.1915 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-18 06:46:23.1915 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-18 06:46:23.1925 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-18 06:46:23.1925 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.1925 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-18 06:46:23.1925 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.1937 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-18 06:46:23.1937 Trace     Scanning Property Culture '' System.Globalization
+2018-04-18 06:46:23.1937 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-18 06:46:23.1937 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-18 06:46:23.1945 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.1945 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.1945 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.1945 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-18 06:46:23.1958 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2018-04-18 06:46:23.1958 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2018-04-18 06:46:23.1969 Trace  Scanning Property Levels 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LogLevel]' System.Collections.ObjectModel
+2018-04-18 06:46:23.1975 Info Found 14 configuration items
+2018-04-18 06:46:23.1986 Trace Initializing Layout Renderer: ${message}
+2018-04-18 06:46:23.1986 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.1995 Trace Initializing Layout Renderer: ${level}
+2018-04-18 06:46:23.1995 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2018-04-18 06:46:23.2026 Trace FindReachableObject<System.Object>:
+2018-04-18 06:46:23.2026 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-18 06:46:23.2026 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2026 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.2059 Trace Initializing Layout Renderer: ${uppercase}
+2018-04-18 06:46:23.2059 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.2059 Trace Initializing Layout Renderer: ${longdate}
+2018-04-18 06:46:23.2065 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2018-04-18 06:46:23.2065 Trace FindReachableObject<System.Object>:
+2018-04-18 06:46:23.2065 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-18 06:46:23.2065 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2065 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-18 06:46:23.2075 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2075 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-18 06:46:23.2075 Trace   Scanning Property Culture '' System.Globalization
+2018-04-18 06:46:23.2075 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-18 06:46:23.2075 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-18 06:46:23.2086 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2086 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.2086 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2086 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-18 06:46:23.2100 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.2100 Trace Initializing Layout Renderer: ${shortdate}
+2018-04-18 06:46:23.2100 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.2106 Trace Initializing '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-18 06:46:23.2106 Trace FindReachableObject<System.Object>:
+2018-04-18 06:46:23.2106 Trace Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-18 06:46:23.2106 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2106 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2116 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-18 06:46:23.2116 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2116 Trace Initializing File Target[logfile]
+2018-04-18 06:46:23.2181 Trace FindReachableObject<NLog.Layouts.Layout>:
+2018-04-18 06:46:23.2185 Trace Scanning FileTarget 'File Target[logfile]'
+2018-04-18 06:46:23.2185 Trace  Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-18 06:46:23.2185 Trace  Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-18 06:46:23.2185 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-18 06:46:23.2185 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-18 06:46:23.2185 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-18 06:46:23.2197 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-18 06:46:23.2197 Trace File Target[logfile] has 2 layouts
+2018-04-18 06:46:23.2214 Trace Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2018-04-18 06:46:23.2216 Trace FindReachableObject<System.Object>:
+2018-04-18 06:46:23.2216 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2018-04-18 06:46:23.2216 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2018-04-18 06:46:23.2216 Trace  Scanning FileTarget 'File Target[logfile]'
+2018-04-18 06:46:23.2225 Trace   Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-18 06:46:23.2225 Trace   Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-18 06:46:23.2225 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2225 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2225 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-18 06:46:23.2236 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2236 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-18 06:46:23.2236 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-18 06:46:23.2236 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2236 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-18 06:46:23.2236 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2246 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-18 06:46:23.2246 Trace     Scanning Property Culture '' System.Globalization
+2018-04-18 06:46:23.2246 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-18 06:46:23.2246 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-18 06:46:23.2246 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2255 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-18 06:46:23.2255 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-18 06:46:23.2255 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-18 06:46:23.2255 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-18 06:46:23.2255 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-18 06:46:23.2267 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2018-04-18 06:46:23.2267 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2018-04-18 06:46:23.2267 Trace  Scanning Property Levels 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LogLevel]' System.Collections.ObjectModel
+2018-04-18 06:46:23.2267 Info Found 14 configuration items
+2018-04-18 06:46:23.2267 Trace Initializing Layout Renderer: ${message}
+2018-04-18 06:46:23.2276 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.2276 Trace Initializing Layout Renderer: ${level}
+2018-04-18 06:46:23.2276 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2018-04-18 06:46:23.2276 Trace Initializing Layout Renderer: ${uppercase}
+2018-04-18 06:46:23.2285 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.2285 Trace Initializing Layout Renderer: ${longdate}
+2018-04-18 06:46:23.2285 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2018-04-18 06:46:23.2285 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.2285 Trace Initializing Layout Renderer: ${shortdate}
+2018-04-18 06:46:23.2297 Trace Initializing Layout Renderer: ${literal}
+2018-04-18 06:46:23.2297 Trace Initializing '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-18 06:46:23.2297 Trace Initializing File Target[logfile]
+2018-04-18 06:46:23.2297 Trace FindReachableObject<NLog.Layouts.Layout>:
+2018-04-18 06:46:23.2305 Trace Scanning FileTarget 'File Target[logfile]'
+2018-04-18 06:46:23.2305 Trace  Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-18 06:46:23.2305 Trace  Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-18 06:46:23.2305 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-18 06:46:23.2305 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-18 06:46:23.2316 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-18 06:46:23.2316 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-18 06:46:23.2316 Trace File Target[logfile] has 2 layouts
+2018-04-18 06:46:23.2923 Debug Watching path '/Users/dev/Documents/_Projektli/KinderKultur_Docker/Server' filter 'nlog.config' for changes.
+2018-04-18 06:47:27.0699 Debug Targets for LoggerService.LoggerManager by level:
+2018-04-18 06:47:27.0707 Debug Trace =>
+2018-04-18 06:47:27.0707 Debug Debug => logfile
+2018-04-18 06:47:27.0707 Debug Info => logfile
+2018-04-18 06:47:27.0707 Debug Warn => logfile
+2018-04-18 06:47:27.0715 Debug Error => logfile
+2018-04-18 06:47:27.0715 Debug Fatal => logfile
+2018-04-18 06:47:27.1234 Debug FileTarget: process file '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt' on startup
+2018-04-18 06:47:27.1358 Debug Creating file appender: //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt
+2018-04-18 06:47:27.1413 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:47:27.1481 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:47:27.1504 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:47:27.1513 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:47:40.4071 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:47:40.4082 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:47:40.4087 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:47:40.4087 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:51:47.3408 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:51:47.3440 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:51:47.3449 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:51:47.3449 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:00.9046 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:00.9046 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:00.9066 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:00.9066 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:17.3232 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:17.3237 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:17.3254 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:52:17.3260 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:54:07.3569 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:54:07.3590 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:54:07.3595 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-18 06:54:07.3595 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-18_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:20.3889 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2018-04-20 07:14:20.6441 Debug Search for auto loading files, location: /Users/dev/.nuget/packages/nlog/4.5.0-rc06/lib/netstandard2.0
+2018-04-20 07:14:20.6484 Debug Search for auto loading files, location: /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/bin/Debug/netcoreapp2.0
+2018-04-20 07:14:20.6489 Debug Start auto loading, location: /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/bin/Debug/netcoreapp2.0
+2018-04-20 07:14:20.6511 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2018-04-20 07:14:20.6511 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2018-04-20 07:14:20.6521 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2018-04-20 07:14:20.6529 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2018-04-20 07:14:20.6529 Debug Auto loading done
+2018-04-20 07:14:20.6541 Info Message Template Auto Format enabled
+2018-04-20 07:14:20.6615 Info Loading assembly: NLog.Extended
+2018-04-20 07:14:20.7461 Error Error loading extensions. Exception: System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+
+File name: 'NLog.Extended, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.XmlLoggingConfiguration.ParseExtensionWithAssembly(String assemblyName, String prefix)
+
+
+2018-04-20 07:14:20.7509 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.XmlLoggingConfiguration.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2018-04-20 07:14:20.7703 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.7750 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-20 07:14:20.7808 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2018-04-20 07:14:20.8321 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2018-04-20 07:14:20.8321 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8321 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.8337 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8339 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-20 07:14:20.8339 Trace  Scanning Property Culture '' System.Globalization
+2018-04-20 07:14:20.8368 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-20 07:14:20.8371 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-20 07:14:20.8371 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.8383 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.8383 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8383 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2018-04-20 07:14:20.8391 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8391 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-20 07:14:20.8784 Debug Setting 'FileTarget.name' to 'logfile'
+2018-04-20 07:14:20.8790 Debug Setting 'FileTarget.fileName' to '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-20 07:14:20.8790 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8790 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-20 07:14:20.8805 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2018-04-20 07:14:20.8805 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8809 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-20 07:14:20.8809 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2018-04-20 07:14:20.8809 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2018-04-20 07:14:20.8809 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8809 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.8821 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8821 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-20 07:14:20.8821 Trace  Scanning Property Culture '' System.Globalization
+2018-04-20 07:14:20.8821 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-20 07:14:20.8821 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-20 07:14:20.8821 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.8829 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.8829 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-20 07:14:20.8829 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-20 07:14:20.8829 Info Adding target File Target[logfile]
+2018-04-20 07:14:20.8855 Debug Registered target logfile: NLog.Targets.FileTarget
+2018-04-20 07:14:20.8862 Trace ParseRulesElement
+2018-04-20 07:14:20.8917 Info Configured from an XML element in /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/nlog.config...
+2018-04-20 07:14:20.8978 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2018-04-20 07:14:20.9004 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2018-04-20 07:14:20.9036 Debug --- NLog configuration dump ---
+2018-04-20 07:14:20.9036 Debug Targets:
+2018-04-20 07:14:20.9042 Debug File Target[logfile]
+2018-04-20 07:14:20.9042 Debug Rules:
+2018-04-20 07:14:20.9068 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2018-04-20 07:14:20.9070 Debug --- End of NLog configuration dump ---
+2018-04-20 07:14:20.9103 Trace FindReachableObject<System.Object>:
+2018-04-20 07:14:20.9103 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2018-04-20 07:14:20.9109 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2018-04-20 07:14:20.9109 Trace  Scanning FileTarget 'File Target[logfile]'
+2018-04-20 07:14:20.9109 Trace   Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-20 07:14:20.9109 Trace   Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-20 07:14:20.9120 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9120 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9120 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-20 07:14:20.9120 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9132 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-20 07:14:20.9132 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-20 07:14:20.9140 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-20 07:14:20.9140 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-20 07:14:20.9140 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9140 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-20 07:14:20.9149 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9149 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-20 07:14:20.9149 Trace     Scanning Property Culture '' System.Globalization
+2018-04-20 07:14:20.9149 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-20 07:14:20.9149 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-20 07:14:20.9162 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9162 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.9162 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9162 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-20 07:14:20.9177 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2018-04-20 07:14:20.9179 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2018-04-20 07:14:20.9179 Trace  Scanning Property Levels 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LogLevel]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9195 Info Found 14 configuration items
+2018-04-20 07:14:20.9206 Trace Initializing Layout Renderer: ${message}
+2018-04-20 07:14:20.9211 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9211 Trace Initializing Layout Renderer: ${level}
+2018-04-20 07:14:20.9211 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2018-04-20 07:14:20.9245 Trace FindReachableObject<System.Object>:
+2018-04-20 07:14:20.9250 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-20 07:14:20.9250 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9250 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.9288 Trace Initializing Layout Renderer: ${uppercase}
+2018-04-20 07:14:20.9292 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9292 Trace Initializing Layout Renderer: ${longdate}
+2018-04-20 07:14:20.9292 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2018-04-20 07:14:20.9300 Trace FindReachableObject<System.Object>:
+2018-04-20 07:14:20.9300 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-20 07:14:20.9300 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9300 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-20 07:14:20.9310 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9310 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-20 07:14:20.9310 Trace   Scanning Property Culture '' System.Globalization
+2018-04-20 07:14:20.9310 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-20 07:14:20.9310 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-20 07:14:20.9320 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9320 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.9320 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9320 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-20 07:14:20.9333 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9333 Trace Initializing Layout Renderer: ${shortdate}
+2018-04-20 07:14:20.9333 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9333 Trace Initializing '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-20 07:14:20.9333 Trace FindReachableObject<System.Object>:
+2018-04-20 07:14:20.9340 Trace Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-20 07:14:20.9340 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9340 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9340 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-20 07:14:20.9340 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9340 Trace Initializing File Target[logfile]
+2018-04-20 07:14:20.9378 Trace FindReachableObject<NLog.Layouts.Layout>:
+2018-04-20 07:14:20.9380 Trace Scanning FileTarget 'File Target[logfile]'
+2018-04-20 07:14:20.9380 Trace  Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-20 07:14:20.9380 Trace  Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-20 07:14:20.9380 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-20 07:14:20.9380 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-20 07:14:20.9380 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-20 07:14:20.9380 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-20 07:14:20.9392 Trace File Target[logfile] has 2 layouts
+2018-04-20 07:14:20.9404 Trace Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2018-04-20 07:14:20.9404 Trace FindReachableObject<System.Object>:
+2018-04-20 07:14:20.9410 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2018-04-20 07:14:20.9410 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2018-04-20 07:14:20.9410 Trace  Scanning FileTarget 'File Target[logfile]'
+2018-04-20 07:14:20.9410 Trace   Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-20 07:14:20.9410 Trace   Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-20 07:14:20.9420 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9420 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9420 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-20 07:14:20.9420 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9429 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-20 07:14:20.9429 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-20 07:14:20.9429 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9429 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-20 07:14:20.9429 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9439 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-20 07:14:20.9439 Trace     Scanning Property Culture '' System.Globalization
+2018-04-20 07:14:20.9439 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-20 07:14:20.9439 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-20 07:14:20.9439 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9449 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-20 07:14:20.9449 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-20 07:14:20.9449 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-20 07:14:20.9449 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-20 07:14:20.9449 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-20 07:14:20.9460 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2018-04-20 07:14:20.9460 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2018-04-20 07:14:20.9460 Trace  Scanning Property Levels 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LogLevel]' System.Collections.ObjectModel
+2018-04-20 07:14:20.9460 Info Found 14 configuration items
+2018-04-20 07:14:20.9460 Trace Initializing Layout Renderer: ${message}
+2018-04-20 07:14:20.9469 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9469 Trace Initializing Layout Renderer: ${level}
+2018-04-20 07:14:20.9469 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2018-04-20 07:14:20.9469 Trace Initializing Layout Renderer: ${uppercase}
+2018-04-20 07:14:20.9479 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9479 Trace Initializing Layout Renderer: ${longdate}
+2018-04-20 07:14:20.9479 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2018-04-20 07:14:20.9479 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9479 Trace Initializing Layout Renderer: ${shortdate}
+2018-04-20 07:14:20.9490 Trace Initializing Layout Renderer: ${literal}
+2018-04-20 07:14:20.9490 Trace Initializing '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-20 07:14:20.9490 Trace Initializing File Target[logfile]
+2018-04-20 07:14:20.9500 Trace FindReachableObject<NLog.Layouts.Layout>:
+2018-04-20 07:14:20.9500 Trace Scanning FileTarget 'File Target[logfile]'
+2018-04-20 07:14:20.9500 Trace  Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-20 07:14:20.9509 Trace  Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-20 07:14:20.9509 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-20 07:14:20.9509 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-20 07:14:20.9509 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-20 07:14:20.9519 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-20 07:14:20.9519 Trace File Target[logfile] has 2 layouts
+2018-04-20 07:14:20.9928 Debug Watching path '/Users/dev/Documents/_Projektli/KinderKultur_Docker/Server' filter 'nlog.config' for changes.
+2018-04-20 07:14:47.7831 Debug Targets for LoggerService.LoggerManager by level:
+2018-04-20 07:14:47.7849 Debug Trace =>
+2018-04-20 07:14:47.7849 Debug Debug => logfile
+2018-04-20 07:14:47.7849 Debug Info => logfile
+2018-04-20 07:14:47.7849 Debug Warn => logfile
+2018-04-20 07:14:47.7860 Debug Error => logfile
+2018-04-20 07:14:47.7860 Debug Fatal => logfile
+2018-04-20 07:14:47.8381 Debug FileTarget: process file '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt' on startup
+2018-04-20 07:14:47.8563 Debug Creating file appender: //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt
+2018-04-20 07:14:47.8665 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:47.8863 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:47.8896 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:47.8904 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:59.0453 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:59.0459 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:59.0459 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:14:59.0459 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.0211 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.0234 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.0239 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.0239 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.3547 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.3561 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.3561 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:24:49.3572 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:41:32.6253 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:41:32.6310 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:41:32.6310 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-20 07:41:32.6322 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-20_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:17:10.4749 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2018-04-23 20:17:10.8145 Debug Search for auto loading files, location: /Users/dev/.nuget/packages/nlog/4.5.0-rc06/lib/netstandard2.0
+2018-04-23 20:17:10.8199 Debug Search for auto loading files, location: /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/bin/Debug/netcoreapp2.0
+2018-04-23 20:17:10.8205 Debug Start auto loading, location: /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/bin/Debug/netcoreapp2.0
+2018-04-23 20:17:10.8254 Trace Assembly 'Microsoft.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2018-04-23 20:17:10.8254 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2018-04-23 20:17:10.8254 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2018-04-23 20:17:10.8277 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2018-04-23 20:17:10.8284 Debug Auto loading done
+2018-04-23 20:17:10.8304 Info Message Template Auto Format enabled
+2018-04-23 20:17:10.8425 Info Loading assembly: NLog.Extended
+2018-04-23 20:17:10.9724 Error Error loading extensions. Exception: System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+
+File name: 'NLog.Extended, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.XmlLoggingConfiguration.ParseExtensionWithAssembly(String assemblyName, String prefix)
+
+
+2018-04-23 20:17:10.9804 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, IntPtr ptrLoadContextBinder)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.XmlLoggingConfiguration.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2018-04-23 20:17:11.0090 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.0163 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-23 20:17:11.0288 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2018-04-23 20:17:11.1318 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2018-04-23 20:17:11.1318 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.1325 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.1335 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.1335 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-23 20:17:11.1335 Trace  Scanning Property Culture '' System.Globalization
+2018-04-23 20:17:11.1387 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-23 20:17:11.1394 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-23 20:17:11.1407 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.1430 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.1450 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.1463 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2018-04-23 20:17:11.1463 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.1476 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-23 20:17:11.2040 Debug Setting 'FileTarget.name' to 'logfile'
+2018-04-23 20:17:11.2058 Debug Setting 'FileTarget.fileName' to '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-23 20:17:11.2070 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.2076 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-23 20:17:11.2094 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2018-04-23 20:17:11.2094 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.2094 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-23 20:17:11.2094 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2018-04-23 20:17:11.2104 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2018-04-23 20:17:11.2104 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.2104 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.2104 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.2115 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-23 20:17:11.2115 Trace  Scanning Property Culture '' System.Globalization
+2018-04-23 20:17:11.2115 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-23 20:17:11.2132 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-23 20:17:11.2136 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.2136 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.2136 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2018-04-23 20:17:11.2136 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-23 20:17:11.2152 Info Adding target File Target[logfile]
+2018-04-23 20:17:11.2170 Debug Registered target logfile: NLog.Targets.FileTarget
+2018-04-23 20:17:11.2223 Trace ParseRulesElement
+2018-04-23 20:17:11.2355 Info Configured from an XML element in /Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/nlog.config...
+2018-04-23 20:17:11.2469 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2018-04-23 20:17:11.2493 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2018-04-23 20:17:11.2524 Debug --- NLog configuration dump ---
+2018-04-23 20:17:11.2524 Debug Targets:
+2018-04-23 20:17:11.2524 Debug File Target[logfile]
+2018-04-23 20:17:11.2524 Debug Rules:
+2018-04-23 20:17:11.2594 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2018-04-23 20:17:11.2603 Debug --- End of NLog configuration dump ---
+2018-04-23 20:17:11.2654 Trace FindReachableObject<System.Object>:
+2018-04-23 20:17:11.2654 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2018-04-23 20:17:11.2654 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2018-04-23 20:17:11.2654 Trace  Scanning FileTarget 'File Target[logfile]'
+2018-04-23 20:17:11.2668 Trace   Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-23 20:17:11.2668 Trace   Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-23 20:17:11.2668 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.2675 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.2675 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-23 20:17:11.2675 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.2684 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-23 20:17:11.2684 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-23 20:17:11.2693 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-23 20:17:11.2693 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-23 20:17:11.2693 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.2693 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-23 20:17:11.2693 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.2704 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-23 20:17:11.2727 Trace     Scanning Property Culture '' System.Globalization
+2018-04-23 20:17:11.2737 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-23 20:17:11.2746 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-23 20:17:11.2746 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.2758 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.2765 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.2765 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-23 20:17:11.2781 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2018-04-23 20:17:11.2795 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2018-04-23 20:17:11.2814 Trace  Scanning Property Levels 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LogLevel]' System.Collections.ObjectModel
+2018-04-23 20:17:11.2814 Info Found 14 configuration items
+2018-04-23 20:17:11.2833 Trace Initializing Layout Renderer: ${message}
+2018-04-23 20:17:11.2833 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.2833 Trace Initializing Layout Renderer: ${level}
+2018-04-23 20:17:11.2850 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2018-04-23 20:17:11.2902 Trace FindReachableObject<System.Object>:
+2018-04-23 20:17:11.2909 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-23 20:17:11.2909 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.2919 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.2955 Trace Initializing Layout Renderer: ${uppercase}
+2018-04-23 20:17:11.2955 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.2955 Trace Initializing Layout Renderer: ${longdate}
+2018-04-23 20:17:11.2968 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2018-04-23 20:17:11.2986 Trace FindReachableObject<System.Object>:
+2018-04-23 20:17:11.3003 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-23 20:17:11.3005 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.3005 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-23 20:17:11.3005 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3015 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-23 20:17:11.3015 Trace   Scanning Property Culture '' System.Globalization
+2018-04-23 20:17:11.3015 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-23 20:17:11.3029 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-23 20:17:11.3029 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.3034 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.3034 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3034 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-23 20:17:11.3034 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.3044 Trace Initializing Layout Renderer: ${shortdate}
+2018-04-23 20:17:11.3044 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.3044 Trace Initializing '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-23 20:17:11.3044 Trace FindReachableObject<System.Object>:
+2018-04-23 20:17:11.3044 Trace Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-23 20:17:11.3044 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.3044 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3054 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-23 20:17:11.3054 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3054 Trace Initializing File Target[logfile]
+2018-04-23 20:17:11.3093 Trace FindReachableObject<NLog.Layouts.Layout>:
+2018-04-23 20:17:11.3098 Trace Scanning FileTarget 'File Target[logfile]'
+2018-04-23 20:17:11.3098 Trace  Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-23 20:17:11.3098 Trace  Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-23 20:17:11.3108 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-23 20:17:11.3116 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-23 20:17:11.3127 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-23 20:17:11.3127 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-23 20:17:11.3139 Trace File Target[logfile] has 2 layouts
+2018-04-23 20:17:11.3152 Trace Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2018-04-23 20:17:11.3154 Trace FindReachableObject<System.Object>:
+2018-04-23 20:17:11.3154 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2018-04-23 20:17:11.3154 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2018-04-23 20:17:11.3154 Trace  Scanning FileTarget 'File Target[logfile]'
+2018-04-23 20:17:11.3154 Trace   Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-23 20:17:11.3154 Trace   Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-23 20:17:11.3154 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.3164 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3164 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2018-04-23 20:17:11.3164 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3164 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-23 20:17:11.3164 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-23 20:17:11.3164 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.3164 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2018-04-23 20:17:11.3164 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3174 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2018-04-23 20:17:11.3174 Trace     Scanning Property Culture '' System.Globalization
+2018-04-23 20:17:11.3174 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2018-04-23 20:17:11.3174 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2018-04-23 20:17:11.3174 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2018-04-23 20:17:11.3174 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2018-04-23 20:17:11.3184 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2018-04-23 20:17:11.3184 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2018-04-23 20:17:11.3184 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-23 20:17:11.3184 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-23 20:17:11.3184 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2018-04-23 20:17:11.3184 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2018-04-23 20:17:11.3194 Trace  Scanning Property Levels 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LogLevel]' System.Collections.ObjectModel
+2018-04-23 20:17:11.3194 Info Found 14 configuration items
+2018-04-23 20:17:11.3194 Trace Initializing Layout Renderer: ${message}
+2018-04-23 20:17:11.3194 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.3208 Trace Initializing Layout Renderer: ${level}
+2018-04-23 20:17:11.3224 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2018-04-23 20:17:11.3224 Trace Initializing Layout Renderer: ${uppercase}
+2018-04-23 20:17:11.3236 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.3236 Trace Initializing Layout Renderer: ${longdate}
+2018-04-23 20:17:11.3236 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2018-04-23 20:17:11.3245 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.3245 Trace Initializing Layout Renderer: ${shortdate}
+2018-04-23 20:17:11.3245 Trace Initializing Layout Renderer: ${literal}
+2018-04-23 20:17:11.3245 Trace Initializing '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'
+2018-04-23 20:17:11.3245 Trace Initializing File Target[logfile]
+2018-04-23 20:17:11.3254 Trace FindReachableObject<NLog.Layouts.Layout>:
+2018-04-23 20:17:11.3254 Trace Scanning FileTarget 'File Target[logfile]'
+2018-04-23 20:17:11.3254 Trace  Scanning Property FileName ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt'' NLog.Layouts
+2018-04-23 20:17:11.3254 Trace  Scanning SimpleLayout ''//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/${shortdate}_logfile.txt''
+2018-04-23 20:17:11.3254 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2018-04-23 20:17:11.3254 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2018-04-23 20:17:11.3254 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2018-04-23 20:17:11.3254 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2018-04-23 20:17:11.3270 Trace File Target[logfile] has 2 layouts
+2018-04-23 20:17:11.4430 Debug Watching path '/Users/dev/Documents/_Projektli/KinderKultur_Docker/Server' filter 'nlog.config' for changes.
+2018-04-23 20:24:34.3965 Debug Targets for LoggerService.LoggerManager by level:
+2018-04-23 20:24:34.3965 Debug Trace =>
+2018-04-23 20:24:34.3973 Debug Debug => logfile
+2018-04-23 20:24:34.3973 Debug Info => logfile
+2018-04-23 20:24:34.3973 Debug Warn => logfile
+2018-04-23 20:24:34.3973 Debug Error => logfile
+2018-04-23 20:24:34.3973 Debug Fatal => logfile
+2018-04-23 20:24:34.4433 Debug FileTarget: process file '//Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt' on startup
+2018-04-23 20:24:34.4558 Debug Creating file appender: //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt
+2018-04-23 20:24:34.4606 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:24:34.4669 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:24:34.4699 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:24:34.4707 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:24:41.9853 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:24:41.9860 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:24:41.9865 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:24:41.9865 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:39:52.8596 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:39:52.9600 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:39:52.9844 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:39:53.0104 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:42:35.6540 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:42:35.6568 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:42:35.6573 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:42:35.6573 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:43:16.9806 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:43:16.9820 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:43:16.9825 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:43:16.9825 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:44:27.7662 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:44:27.7667 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:44:27.7683 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:44:27.7685 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.4731 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.4757 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.4757 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.4767 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.9148 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.9481 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.9484 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:53:58.9484 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:54:03.3363 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:54:03.3363 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:54:03.3387 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:54:03.3387 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:09.1227 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:09.1253 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:09.1253 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:09.1253 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:19.8931 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:19.8936 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:19.8956 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:56:19.8956 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:23.0953 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:23.0953 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:23.0973 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:23.0973 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:48.9742 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:48.9765 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:48.9765 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
+2018-04-23 20:58:48.9765 Trace Opening //Users/dev/Documents/_Projektli/KinderKultur_Docker/Server/Logs/2018-04-23_logfile.txt with allowFileSharedWriting=False
