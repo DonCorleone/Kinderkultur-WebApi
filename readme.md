@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Application-Server built on .Net Core 2.1 for Kinderkultur.ch Pet - Project
+Application-Server built on .NET Core 2.1 for Kinderkultur.ch Pet - Project
 
 
 ## Autorization
