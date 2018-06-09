@@ -4,10 +4,9 @@
 
 Application-Server built on .NET Core 2.1 for Kinderkultur.ch Pet - Project
 
+## Authorization
 
-## Autorization
-
-https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-2.1
+[Idee](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-2.1)
 
 ## DBs
 
