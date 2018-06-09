@@ -1,33 +1,33 @@
 ﻿using System;
-using System.Linq;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Cors;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using KinderKulturServer.Repositories.Links;
-using KinderKulturServer.Models;
-using KinderKulturServer.Data;
-using KinderKulturServer.Extensions;
 using System.IO;
-using NLog.Extensions.Logging;
-using KinderKulturServer.Contracts;
-using LoggerService;
-using KinderKulturServer.Models.Entities;
-using KinderKulturServer.Helpers;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using KinderKulturServer.Auth;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Net;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 using AutoMapper;
 using FluentValidation.AspNetCore;
+using KinderKulturServer.Auth;
+using KinderKulturServer.Contracts;
+using KinderKulturServer.Data;
+using KinderKulturServer.Extensions;
+using KinderKulturServer.Helpers;
+using KinderKulturServer.Models;
+using KinderKulturServer.Models.Entities;
+using KinderKulturServer.Repositories.Links;
+using LoggerService;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
-using System.Net;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using NLog.Extensions.Logging;
 
 namespace KinderKulturServer
 {
@@ -43,8 +43,8 @@ namespace KinderKulturServer
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("appsettings.json", optional : true, reloadOnChange : true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional : true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -58,7 +58,16 @@ namespace KinderKulturServer
             services.ConfigureCors();
 
             // Add framework services.
-            services.AddMvc();
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddApiVersioning();
             services.Configure<Settings>(options =>
             {
@@ -153,20 +162,42 @@ namespace KinderKulturServer
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHsts();
+
+            }else{
+                app.UseExceptionHandler(
+                    builder =>
+                    {
+                        builder.Run(
+                            async context =>
+                            {
+                                context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                                context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+                                var error = context.Features.Get<IExceptionHandlerFeature>();
+                                if (error != null)
+                                {
+                                    context.Response.AddApplicationError(error.Error.Message);
+                                    await context.Response.WriteAsync(error.Error.Message).ConfigureAwait(false);
+                                }
+                            });
+                    });
+
             }
 
-            var angularRoutes = new[] {
-                 "/home",
-                 "/links",
-                 "/dashboard"
-             };
+            var angularRoutes = new []
+            {
+                "/home",
+                "/links",
+                "/dashboard"
+            };
 
             app.UseAuthentication();
 
-            app.Use(async (context, next) =>
+            app.Use(async(context, next) =>
             {
                 if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
-                    (ar) => context.Request.Path.Value.StartsWith(ar, StringComparison.OrdinalIgnoreCase)))
+                        (ar) => context.Request.Path.Value.StartsWith(ar, StringComparison.OrdinalIgnoreCase)))
                 {
                     context.Request.Path = new PathString("/");
                 }
@@ -180,22 +211,24 @@ namespace KinderKulturServer
                 builder =>
                 {
                     builder.Run(
-                                    async context =>
-                                    {
-                                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                                        context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                        async context =>
+                        {
+                            context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                            context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-                                        var error = context.Features.Get<IExceptionHandlerFeature>();
-                                        if (error != null)
-                                        {
-                                            context.Response.AddApplicationError(error.Error.Message);
-                                            await context.Response.WriteAsync(error.Error.Message).ConfigureAwait(false);
-                                        }
-                                    });
+                            var error = context.Features.Get<IExceptionHandlerFeature>();
+                            if (error != null)
+                            {
+                                context.Response.AddApplicationError(error.Error.Message);
+                                await context.Response.WriteAsync(error.Error.Message).ConfigureAwait(false);
+                            }
+                        });
                 });
 
             app.UseDefaultFiles();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseCors("CorsPolicy");
 
