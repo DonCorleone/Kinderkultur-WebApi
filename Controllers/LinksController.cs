@@ -20,7 +20,8 @@ namespace KinderKulturServer.Controller
     [ApiVersion("1.0")]
     [Produces("application/json")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class LinksController : Microsoft.AspNetCore.Mvc.Controller
+    [ApiController]
+    public class LinksController : ControllerBase
     {
         private readonly ILinkRepository _linksRepository;
         private readonly ClaimsPrincipal _caller;
@@ -33,8 +34,6 @@ namespace KinderKulturServer.Controller
             _logger = logger;
             _caller = httpContextAccessor.HttpContext.User;
         }
-
-
     
         [AllowAnonymous]    
         [NoCache]
@@ -54,6 +53,7 @@ namespace KinderKulturServer.Controller
         }
 
         [HttpGet("{id}", Name = "GetLink")]
+        [ProducesResponseType(404)]
         public Task<Link> GetLink(string id)
         {
 
@@ -136,10 +136,11 @@ namespace KinderKulturServer.Controller
             Task<Link> thing = existingEntity;
             patchDoc.ApplyTo(thing.Result, ModelState);
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            // The following code becomes unnecessary in your actions: (.Net Core 2.1)
+            // if (!ModelState.IsValid)
+            // {
+            //     return BadRequest(ModelState);
+            // }
 
             var result = _linksRepository.UpdateLink(id.ToString(), thing.Result);
 

@@ -74,6 +74,13 @@ namespace KinderKulturServer
                 options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             });
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressConsumesConstraintForFormFileParameters = true;
+                options.SuppressInferBindingSourcesForParameters = true;
+                options.SuppressModelStateInvalidFilter = true;
+            });
             services.AddTransient<ILinkRepository, LinkRepository>();
 
             services.AddSingleton<ILoggerManager, LoggerManager>();
