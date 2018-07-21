@@ -39,7 +39,7 @@ namespace KinderKulturServer
         public Startup(IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
 
-            loggerFactory.ConfigureNLog(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+            NLog.LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
