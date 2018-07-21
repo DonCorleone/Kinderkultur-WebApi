@@ -38,9 +38,10 @@ namespace KinderKulturServer
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
         public Startup(IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-
+            // Logging
             NLog.LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
+            // Config Files
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional : true, reloadOnChange : true)
@@ -65,15 +66,9 @@ namespace KinderKulturServer
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            // .NET Core WebApi functionality
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddApiVersioning();
-            services.Configure<Settings>(options =>
-            {
-                options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
-                options.Database = Configuration.GetSection("MongoConnection:Database").Value;
-            });
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -81,9 +76,21 @@ namespace KinderKulturServer
                 options.SuppressInferBindingSourcesForParameters = true;
                 options.SuppressModelStateInvalidFilter = true;
             });
+
+            // API Versioning 
+            services.AddApiVersioning();
+            
+            // Dependency Injection MongoDb Service
             services.AddTransient<ILinkRepository, LinkRepository>();
 
             services.AddSingleton<ILoggerManager, LoggerManager>();
+
+            // MongoDB Connection Information
+            services.Configure<Settings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+                options.Database = Configuration.GetSection("MongoConnection:Database").Value;
+            });
 
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -192,25 +199,25 @@ namespace KinderKulturServer
 
             }
 
-            var angularRoutes = new []
-            {
-                "/home",
-                "/links",
-                "/dashboard"
-            };
+            // var angularRoutes = new []
+            // {
+            //     "/home",
+            //     "/links",
+            //     "/dashboard"
+            // };
 
-            app.UseAuthentication();
+            // app.UseAuthentication();
 
-            app.Use(async(context, next) =>
-            {
-                if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
-                        (ar) => context.Request.Path.Value.StartsWith(ar, StringComparison.OrdinalIgnoreCase)))
-                {
-                    context.Request.Path = new PathString("/");
-                }
+            // app.Use(async(context, next) =>
+            // {
+            //     if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
+            //             (ar) => context.Request.Path.Value.StartsWith(ar, StringComparison.OrdinalIgnoreCase)))
+            //     {
+            //         context.Request.Path = new PathString("/");
+            //     }
 
-                await next();
-            });
+            //     await next();
+            // });
 
             app.UseCors("AllowAllOrigins");
 
