@@ -206,7 +206,7 @@ namespace KinderKulturServer
             //     "/dashboard"
             // };
 
-            // app.UseAuthentication();
+            app.UseAuthentication();
 
             // app.Use(async(context, next) =>
             // {
