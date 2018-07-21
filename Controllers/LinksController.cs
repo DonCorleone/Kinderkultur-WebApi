@@ -25,7 +25,6 @@ namespace KinderKulturServer.Controller
     {
         private readonly ILinkRepository _linksRepository;
         private readonly ClaimsPrincipal _caller;
-
         private ILoggerManager _logger;
 
         public LinksController(ILinkRepository linksRepository, ILoggerManager logger, IHttpContextAccessor httpContextAccessor)
@@ -52,27 +51,28 @@ namespace KinderKulturServer.Controller
             return await _linksRepository.GetAllLinks();
         }
 
-        [HttpGet("{id}", Name = "GetLink")]
+
+        [HttpGet("{id}", Name = nameof(GetLink))]
         [ProducesResponseType(404)]
-        public Task<Link> GetLink(string id)
+        public async Task<ActionResult<Link>> GetLink(string id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            return GetLinkByIdInternal(id);
-        }
+            var link = await (_linksRepository.GetLink(id));
 
-        private async Task<Link> GetLinkByIdInternal(string id)
-        {
-
-            return await (_linksRepository.GetLink(id));
+            return base.Ok(link);
         }
 
         // POST api/links
         [HttpPost]
-        public IActionResult Post([FromBody] Link value)
+        public async Task<ActionResult<Link>>CreateLink([FromBody] Link value)
         {
             if (value == null)
             {
-                return BadRequest();
+                return base.BadRequest();
             }
 
             var newLink = new Link()
@@ -84,9 +84,9 @@ namespace KinderKulturServer.Controller
                 urldesc = value.urldesc
             };
 
-            var x = _linksRepository.AddLink(newLink);
+            await (_linksRepository.AddLink(newLink));
 
-            return CreatedAtRoute("GetLink", new { id = newLink.Id }, newLink);
+            return base.CreatedAtRoute(nameof(GetLink), new { id = newLink.Id }, newLink);
         }
 
         // PUT api/links/5
@@ -111,7 +111,7 @@ namespace KinderKulturServer.Controller
             var todo = _linksRepository.GetLink(id);
             if (todo == null)
             {
-                return NotFound();
+                return base.NotFound();
             }
 
             _linksRepository.RemoveLink(id);
@@ -123,14 +123,14 @@ namespace KinderKulturServer.Controller
         {
             if (patchDoc == null)
             {
-                return BadRequest();
+                return base.BadRequest();
             }
 
             Task<Link> existingEntity = _linksRepository.GetLink(id.ToString());
 
             if (existingEntity == null)
             {
-                return NotFound();
+                return base.NotFound();
             }
 
             Task<Link> thing = existingEntity;
@@ -144,7 +144,7 @@ namespace KinderKulturServer.Controller
 
             var result = _linksRepository.UpdateLink(id.ToString(), thing.Result);
 
-            return Ok(result.Result);
+            return base.Ok(result.Result);
         }
     }
 }
