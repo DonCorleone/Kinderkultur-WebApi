@@ -57,9 +57,7 @@ namespace KinderKulturServer.Controller
         public async Task<ActionResult<Link>> GetLink(string id)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             var link = await (_linksRepository.GetLink(id));
 
@@ -71,10 +69,8 @@ namespace KinderKulturServer.Controller
         public async Task<ActionResult<Link>>CreateLink([FromBody] Link value)
         {
             if (value == null)
-            {
                 return base.BadRequest();
-            }
-
+                
             var newLink = new Link()
             {
                 name = value.name,
@@ -98,22 +94,13 @@ namespace KinderKulturServer.Controller
             return new NoContentResult();
         }
 
-        // DELETE api/notes/23243423
-        // [HttpDelete("{id}")]
-        // public void Delete(string id)
-        // {
-        //     _linksRepository.RemoveLink(id);
-        // }
-
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var todo = _linksRepository.GetLink(id);
-            if (todo == null)
-            {
+            var link = _linksRepository.GetLink(id);
+            if (link == null)
                 return base.NotFound();
-            }
-
+            
             _linksRepository.RemoveLink(id);
             return new NoContentResult();
         }
@@ -122,27 +109,17 @@ namespace KinderKulturServer.Controller
         public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<Link> patchDoc)
         {
             if (patchDoc == null)
-            {
                 return base.BadRequest();
-            }
 
             Task<Link> existingEntity = _linksRepository.GetLink(id.ToString());
 
             if (existingEntity == null)
-            {
                 return base.NotFound();
-            }
 
-            Task<Link> thing = existingEntity;
-            patchDoc.ApplyTo(thing.Result, ModelState);
+            Task<Link> link = existingEntity;
+            patchDoc.ApplyTo(link.Result, ModelState);
 
-            // The following code becomes unnecessary in your actions: (.Net Core 2.1)
-            // if (!ModelState.IsValid)
-            // {
-            //     return BadRequest(ModelState);
-            // }
-
-            var result = _linksRepository.UpdateLink(id.ToString(), thing.Result);
+            var result = _linksRepository.UpdateLink(id.ToString(), link.Result);
 
             return base.Ok(result.Result);
         }
