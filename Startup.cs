@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using AutoMapper;
@@ -27,11 +26,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using NLog.Extensions.Logging;
+using NJsonSchema;
+using NSwag.AspNetCore;
+using System.Reflection;
 
 namespace KinderKulturServer
 {
-    public class Startup
+   public class Startup
     {
 
         private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // todo: get this from somewhere secure
@@ -242,6 +243,15 @@ namespace KinderKulturServer
             app.UseDefaultFiles();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // Enable the Swagger UI middleware and the Swagger generator
+            app.UseSwaggerUi3(typeof(Startup).GetTypeInfo().Assembly, settings =>
+            {
+                settings.GeneratorSettings.DefaultPropertyNameHandling = 
+                    PropertyNameHandling.CamelCase;
+                
+            });
+
             app.UseCookiePolicy();
 
             app.UseCors("CorsPolicy");
