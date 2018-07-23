@@ -29,6 +29,8 @@ using Microsoft.IdentityModel.Tokens;
 using NJsonSchema;
 using NSwag.AspNetCore;
 using System.Reflection;
+using NSwag.SwaggerGeneration.Processors.Security;
+using NSwag;
 
 namespace KinderKulturServer
 {
@@ -244,18 +246,27 @@ namespace KinderKulturServer
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            // Enable the Swagger UI middleware and the Swagger generator
-            app.UseSwaggerUi3(typeof(Startup).GetTypeInfo().Assembly, settings =>
-            {
-                settings.GeneratorSettings.DefaultPropertyNameHandling = 
-                    PropertyNameHandling.CamelCase;
-                
-            });
-
+                        
             app.UseCookiePolicy();
 
             app.UseCors("CorsPolicy");
 
+            app.UseSwaggerUi3WithApiExplorer(settings =>
+            {
+                settings.DocExpansion = "list";
+
+                settings.GeneratorSettings.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT token"));
+
+                settings.GeneratorSettings.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT token",
+                    new SwaggerSecurityScheme
+                    {
+                        Type        = SwaggerSecuritySchemeType.ApiKey,
+                        Name        = "Authorization",
+                        Description = "Copy 'Bearer ' + valid JWT token into field",
+                        In          = SwaggerSecurityApiKeyLocation.Header,
+                    }));
+            });
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
