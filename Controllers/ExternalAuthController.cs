@@ -21,14 +21,14 @@ namespace KinderKulturServer.Controllers
     [Route("api/v{version:apiVersion}/[controller]/[action]")]
     public class ExternalAuthController : ControllerBase
     {
-        private readonly ApplicationDbContext _appDbContext;
+        private readonly MariaDbContext _appDbContext;
         private readonly UserManager<AppUser> _userManager;
         private readonly FacebookAuthSettings _fbAuthSettings;
         private readonly IJwtFactory _jwtFactory;
         private readonly JwtIssuerOptions _jwtOptions;
         private static readonly HttpClient Client = new HttpClient();
 
-        public ExternalAuthController(IOptions<FacebookAuthSettings> fbAuthSettingsAccessor, UserManager<AppUser> userManager, ApplicationDbContext appDbContext, IJwtFactory jwtFactory, IOptions<JwtIssuerOptions> jwtOptions)
+        public ExternalAuthController(IOptions<FacebookAuthSettings> fbAuthSettingsAccessor, UserManager<AppUser> userManager, MariaDbContext appDbContext, IJwtFactory jwtFactory, IOptions<JwtIssuerOptions> jwtOptions)
         {
             _fbAuthSettings = fbAuthSettingsAccessor.Value;
             _userManager = userManager;
@@ -36,9 +36,9 @@ namespace KinderKulturServer.Controllers
             _jwtFactory = jwtFactory;
             _jwtOptions = jwtOptions.Value;
         }
-
-        // POST api/externalauth/facebook
-        [HttpPost]
+        
+        [ProducesResponseType(400)]     // BadRequest
+        [HttpPost]                      // POST api/externalauth/facebook
         public async Task<IActionResult> Facebook([FromBody]FacebookAuthViewModel model)
         {
             // 1.generate an app access token
@@ -88,7 +88,7 @@ namespace KinderKulturServer.Controllers
             var jwt = await Tokens.GenerateJwt(_jwtFactory.GenerateClaimsIdentity(localUser.UserName, localUser.Id),
               _jwtFactory, localUser.UserName, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
-            return new OkObjectResult(jwt);
+            return base.Ok(jwt);
         }
     }
 }

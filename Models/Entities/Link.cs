@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.IdGenerators;
 
-namespace KinderKulturServer.Models
+namespace KinderKulturServer.Models.Entities
 {
     public class Link{
         [BsonRepresentation(BsonType.ObjectId)]

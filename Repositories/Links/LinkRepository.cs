@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using KinderKulturServer.Data;
 using KinderKulturServer.Models;
+using KinderKulturServer.Models.Entities;
+using KinderKulturServer.ViewModels;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -12,17 +14,23 @@ namespace KinderKulturServer.Repositories.Links
     public class LinkRepository : ILinkRepository
     {
 
-        private readonly LinkContext _context = null;
-        public LinkRepository(IOptions<Settings> settings)
+        private readonly MongoDBContext _mongoDbContext = null;
+        private IMongoCollection<Link> LinksCollection{get { 
+                return _mongoDbContext.MongoDatabase.GetCollection<Link>("links");
+            }
+        }
+            
+        
+        public LinkRepository(MongoDBContext mongoDBContext)
         {
-            _context = new LinkContext(settings);
+            _mongoDbContext = mongoDBContext;
         }
 
         public async Task AddLink(Link item)
         {
             try
             {
-                await _context.Links.InsertOneAsync(item);
+                await LinksCollection.InsertOneAsync(item);
             }
             catch (System.Exception ex)
             {
@@ -35,7 +43,7 @@ namespace KinderKulturServer.Repositories.Links
         {
             try
             {
-                return await _context.Links.Find(_ => true).ToListAsync();
+                return await LinksCollection.Find(_ => true).ToListAsync();
             }
             catch (System.Exception ex)
             {
@@ -51,7 +59,7 @@ namespace KinderKulturServer.Repositories.Links
             var filter = Builders<Link>.Filter.Eq("Id", ObjectId.Parse(id));
             try
             {
-                return await _context.Links
+                return await LinksCollection
                                 .Find(filter)
                                 .FirstOrDefaultAsync();
             }
@@ -80,7 +88,7 @@ namespace KinderKulturServer.Repositories.Links
             try
             {
                 var tempId = ObjectId.Parse(id);
-                return await _context.Links
+                return await LinksCollection
                             .ReplaceOneAsync<Link>(n => n.Id.Equals(tempId)
                                             , item
                                             , new UpdateOptions { IsUpsert = true });
@@ -96,7 +104,7 @@ namespace KinderKulturServer.Repositories.Links
             try
             {
                 var filter = Builders<Link>.Filter.Eq("Id", ObjectId.Parse(id));
-                return await _context.Links.DeleteOneAsync(filter);
+                return await LinksCollection.DeleteOneAsync(filter);
             }
             catch (Exception ex)
             {
@@ -108,7 +116,7 @@ namespace KinderKulturServer.Repositories.Links
         {
             try
             {
-                return await _context.Links.DeleteManyAsync(new BsonDocument());
+                return await LinksCollection.DeleteManyAsync(new BsonDocument());
             }
             catch (Exception ex)
             {

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KinderKulturServer.Models;
+using KinderKulturServer.Models.Entities;
+using KinderKulturServer.ViewModels;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

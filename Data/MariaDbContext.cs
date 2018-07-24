@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KinderKulturServer.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<AppUser>
+    public class MariaDbContext : IdentityDbContext<AppUser>
     {
-        public ApplicationDbContext(DbContextOptions options)
+        public MariaDbContext(DbContextOptions options)
             : base(options)
         {
         }

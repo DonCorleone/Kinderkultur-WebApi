@@ -10,7 +10,7 @@ using System;
 
 namespace AngularWebpackVisualStudio.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(MariaDbContext))]
     [Migration("20180323185657_initial")]
     partial class initial
     {

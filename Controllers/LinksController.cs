@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using KinderKulturServer.Contracts;
 using KinderKulturServer.Infrastructure;
 using KinderKulturServer.Models;
+using KinderKulturServer.Models.Entities;
 using KinderKulturServer.Repositories.Links;
+using KinderKulturServer.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
@@ -52,8 +54,19 @@ namespace KinderKulturServer.Controller
         }
 
 
+        /// <summary>
+        /// Gets a Link
+        /// </summary>
+        /// <remarks>
+        /// /api/vx/Links/Id
+        /// </remarks>
+        /// <param name="id"></param>
+        /// <returns>A Link</returns>
+        /// <response code="200">Returns the Link</response>
+        /// <response code="400">If Link not found</response>  
+        [ProducesResponseType(400)]         // BadRequest
+        [ProducesResponseType(200)]         // OK
         [HttpGet("{id}", Name = nameof(GetLink))]
-        [ProducesResponseType(404)]
         public async Task<ActionResult<Link>> GetLink(string id)
         {
             if (!ModelState.IsValid)
@@ -64,9 +77,10 @@ namespace KinderKulturServer.Controller
             return base.Ok(link);
         }
 
-        // POST api/links
-        [HttpPost]
-        public async Task<ActionResult<Link>>CreateLink([FromBody] Link value)
+        [ProducesResponseType(400)]         // BadRequest
+        [ProducesResponseType(201)]         // Created
+        [HttpPost]                          // POST api/links
+        public async Task<ActionResult<Link>>CreateLink([FromBody] LinkViewModel value)
         {
             if (value == null)
                 return base.BadRequest();
@@ -85,15 +99,17 @@ namespace KinderKulturServer.Controller
             return base.CreatedAtRoute(nameof(GetLink), new { id = newLink.Id }, newLink);
         }
 
-        // PUT api/links/5
-        [HttpPut("{id}")]
+        [ProducesResponseType(204)]         // NoContent
+        [HttpPut("{id}")]                   // PUT api/links/5
         public IActionResult Update(string id, [FromBody] Link value)
         {
 
             _linksRepository.UpdateLinkDocument(id, value);
-            return new NoContentResult();
+            return base.NoContent();
         }
 
+        [ProducesResponseType(404)]         // Not Found
+        [ProducesResponseType(204)]         // NoContent
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
@@ -102,10 +118,13 @@ namespace KinderKulturServer.Controller
                 return base.NotFound();
             
             _linksRepository.RemoveLink(id);
-            return new NoContentResult();
+            return base.NoContent();
         }
 
-        [HttpPatch("{id:int}")]
+        [ProducesResponseType(404)]         // Not Found
+        [ProducesResponseType(400)]         // BadRequest
+        [ProducesResponseType(200)]         // OK
+        [HttpPatch("{id:int}")]             // POST api/links
         public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<Link> patchDoc)
         {
             if (patchDoc == null)

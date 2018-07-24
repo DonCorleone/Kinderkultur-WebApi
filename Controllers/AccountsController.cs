@@ -16,19 +16,22 @@ namespace KinderKulturServer.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class AccountsController : ControllerBase
     {
-        private readonly ApplicationDbContext _appDbContext;
+        private readonly MariaDbContext _appDbContext;
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
 
-        public AccountsController(UserManager<AppUser> userManager, IMapper mapper, ApplicationDbContext appDbContext)
+        public AccountsController(UserManager<AppUser> userManager, IMapper mapper, MariaDbContext appDbContext)
         {
             _userManager = userManager;
             _mapper = mapper;
             _appDbContext = appDbContext;
         }
 
-        // POST api/accounts
-        [HttpPost]
+
+        
+        [ProducesResponseType(400)]         // BadRequest
+        [ProducesResponseType(200)]         // OK
+        [HttpPost]                          // POST api/accounts
         public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
         {
             if (!ModelState.IsValid)
@@ -44,7 +47,7 @@ namespace KinderKulturServer.Controllers
             await _appDbContext.Customers.AddAsync(new Customer { IdentityId = userIdentity.Id, Location = model.Location });
             await _appDbContext.SaveChangesAsync();
 
-            return new OkObjectResult("Account created");
+            return base.Ok("Account created");
         }
     }
 }

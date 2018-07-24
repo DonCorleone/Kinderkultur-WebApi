@@ -30,8 +30,10 @@ namespace KinderKulturServer.Controllers
             _jwtOptions = jwtOptions.Value;
         }
 
-        // POST api/auth/login
-        [HttpPost("login")]
+        
+        [ProducesResponseType(400)]         // BadRequest
+        [ProducesResponseType(200)]         // OK
+        [HttpPost("login")]                 // POST api/auth/login
         public async Task<IActionResult> Post([FromBody]CredentialsViewModel credentials)
         {
             if (!ModelState.IsValid)
@@ -43,7 +45,7 @@ namespace KinderKulturServer.Controllers
                 return BadRequest(Errors.AddErrorToModelState("login_failure", "Invalid username or password.", ModelState));
             
             var jwt = await Tokens.GenerateJwt(identity, _jwtFactory, credentials.UserName, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
-            return new OkObjectResult(jwt);
+            return base.Ok(jwt);
         }
 
         private async Task<ClaimsIdentity> GetClaimsIdentity(string userName, string password)
