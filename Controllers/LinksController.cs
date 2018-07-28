@@ -4,8 +4,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using KinderKulturServer.Contracts;
 using KinderKulturServer.Infrastructure;
-using KinderKulturServer.Models;
-using KinderKulturServer.Repositories.Links;
 using KinderKulturServer.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

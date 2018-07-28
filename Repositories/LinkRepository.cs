@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using KinderKulturServer.Contracts;
 using KinderKulturServer.Data;
 using KinderKulturServer.Models.Entities;
 using KinderKulturServer.ViewModels;
@@ -9,7 +10,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace KinderKulturServer.Repositories.Links
+namespace KinderKulturServer.Repositories
 {
     public class LinkRepository : ILinkRepository
     {

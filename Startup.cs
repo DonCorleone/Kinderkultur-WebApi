@@ -12,7 +12,7 @@ using KinderKulturServer.Extensions;
 using KinderKulturServer.Helpers;
 using KinderKulturServer.Models;
 using KinderKulturServer.Models.Entities;
-using KinderKulturServer.Repositories.Links;
+using KinderKulturServer.Repositories;
 using LoggerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -157,18 +157,7 @@ namespace KinderKulturServer
                     policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
             });
 
-            // add identity
-            var builder = services.AddIdentityCore<AppUser>(o =>
-            {
-                // configure identity options
-                o.Password.RequireDigit = false;
-                o.Password.RequireLowercase = false;
-                o.Password.RequireUppercase = false;
-                o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequiredLength = 6;
-            });
-            builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);
-            builder.AddEntityFrameworkStores<MariaDbContext>().AddDefaultTokenProviders();
+            services.ConfigureAuthentication();
 
             services.AddAutoMapper();
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());

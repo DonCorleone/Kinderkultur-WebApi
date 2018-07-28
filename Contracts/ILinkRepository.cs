@@ -6,7 +6,7 @@ using KinderKulturServer.ViewModels;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace KinderKulturServer.Repositories.Links
+namespace KinderKulturServer.Contracts
 {
     public interface ILinkRepository
     {
