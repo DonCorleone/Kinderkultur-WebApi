@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using KinderKulturServer.Data;
-using KinderKulturServer.Models;
 using KinderKulturServer.Models.Entities;
 using KinderKulturServer.ViewModels;
 using Microsoft.Extensions.Options;
@@ -15,87 +15,116 @@ namespace KinderKulturServer.Repositories.Links
     {
 
         private readonly MongoDBContext _mongoDbContext = null;
-        private IMongoCollection<Link> LinksCollection{get { 
+        private readonly IMapper _mapper;
+
+        private IMongoCollection<Link> LinksCollection
+        {
+            get
+            {
                 return _mongoDbContext.MongoDatabase.GetCollection<Link>("links");
             }
         }
-            
-        
-        public LinkRepository(MongoDBContext mongoDBContext)
+
+        public LinkRepository(MongoDBContext mongoDBContext, IMapper mapper)
         {
-            _mongoDbContext = mongoDBContext;
+            this._mongoDbContext = mongoDBContext;
+            this._mapper = mapper;
         }
 
-        public async Task AddLink(Link item)
+        public async Task AddLink(LinkViewModel viewModel)
         {
             try
             {
-                await LinksCollection.InsertOneAsync(item);
+                var link =  _mapper.Map<Link>(viewModel);
+                await LinksCollection.InsertOneAsync(link);
             }
             catch (System.Exception ex)
             {
-                
+                // ToDo: log or manage the exception
                 throw ex;
             }
         }
 
-        public async Task<IEnumerable<Link>> GetAllLinks()
+        public async Task<IEnumerable<LinkViewModel>> GetAllLinks()
         {
             try
             {
-                return await LinksCollection.Find(_ => true).ToListAsync();
+                var dbList = await LinksCollection.Find(_ => true).ToListAsync();
+                return _mapper.Map<IEnumerable<LinkViewModel>>(dbList);
             }
             catch (System.Exception ex)
             {
-
+                // ToDo: log or manage the exception
                 throw ex;
             }
         }
 
-        public async Task<Link> GetLink(string id)
+        private async Task<Link> GetDbLink(string id)
         {
-            //    return this._collection.Find(new BsonDocument { { "_id", new ObjectId(id) } }).FirstAsync().Result;
-
             var filter = Builders<Link>.Filter.Eq("Id", ObjectId.Parse(id));
             try
             {
-                return await LinksCollection
-                                .Find(filter)
-                                .FirstOrDefaultAsync();
+                var dbLink = await LinksCollection
+                    .Find(filter)
+                    .FirstOrDefaultAsync();
+
+                return dbLink;
+            }
+            catch (System.Exception ex)
+            { 
+                // ToDo: log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<LinkViewModel> GetLink(string id)
+        {
+            try
+            {
+                var dbLink = await GetDbLink(id);
+                return _mapper.Map<LinkViewModel>(dbLink);
             }
             catch (System.Exception ex)
             {
-
+                // ToDo: log or manage the exception
                 throw ex;
             }
         }
 
         // Demo function - full document update
-        public async Task<ReplaceOneResult> UpdateLinkDocument(string id, Link body)
+        public async Task<ReplaceOneResult> UpdateLinkDocument(string id, LinkViewModel viewModel)
         {
-            var item = await GetLink(id) ?? new Link();
-            item.name = body.name;
-            item.title = body.title;
-            item.desc = body.desc;
-            item.url = body.url;
-            item.urldesc = body.urldesc;
-            
-            return await UpdateLink(id, item);
+            var dbLink = await GetDbLink(id);
+            dbLink = _mapper.Map<Link>(viewModel);
+
+            return await UpdateLinkOnDb(id, dbLink);
         }
 
-        public async Task<ReplaceOneResult> UpdateLink(string id, Link item)
+        public async Task<ReplaceOneResult> UpdateLink(string id, LinkViewModel viewModel)
+        {
+            try
+            {
+                var dbLink = _mapper.Map<Link>(viewModel);
+                return await UpdateLinkOnDb(id, dbLink);
+            }
+            catch (Exception ex)
+            {
+                // ToDo: log or manage the exception
+                throw ex;
+            }
+        }
+
+        private async Task<ReplaceOneResult> UpdateLinkOnDb(string id, Link dbLink)
         {
             try
             {
                 var tempId = ObjectId.Parse(id);
                 return await LinksCollection
-                            .ReplaceOneAsync<Link>(n => n.Id.Equals(tempId)
-                                            , item
-                                            , new UpdateOptions { IsUpsert = true });
+                    .ReplaceOneAsync<Link>(n => n.Id.Equals(tempId), dbLink, new UpdateOptions { IsUpsert = true });
             }
             catch (Exception ex)
             {
-                // log or manage the exception
+                // ToDo: log or manage the exception
                 throw ex;
             }
         }
@@ -108,7 +137,7 @@ namespace KinderKulturServer.Repositories.Links
             }
             catch (Exception ex)
             {
-                // log or manage the exception
+                // ToDo: log or manage the exception
                 throw ex;
             }
         }
@@ -120,7 +149,7 @@ namespace KinderKulturServer.Repositories.Links
             }
             catch (Exception ex)
             {
-                // log or manage the exception
+                // ToDo: log or manage the exception
                 throw ex;
             }
         }

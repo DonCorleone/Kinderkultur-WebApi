@@ -9,5 +9,7 @@ namespace KinderKulturServer.Models.Entities
         public string Location { get; set; }
         public string Locale { get; set; }
         public string Gender { get; set; }
+
+        public string Comment { get; set;}
     }
 }

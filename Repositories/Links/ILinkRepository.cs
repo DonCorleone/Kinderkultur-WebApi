@@ -10,20 +10,12 @@ namespace KinderKulturServer.Repositories.Links
 {
     public interface ILinkRepository
     {
-        Task<Link> GetLink(string id);
-        Task AddLink(Link item);
-        //  void Delete(int id);
-        //  Link Update(int id, Link item);
-        Task<IEnumerable<Link>> GetAllLinks();
-        // int Count();
-
-        // demo interface - full document update
-        Task<ReplaceOneResult> UpdateLinkDocument(string id, Link body);
-
-        Task<ReplaceOneResult> UpdateLink(string id, Link body);
-
+        Task<LinkViewModel> GetLink(string id);
+        Task AddLink(LinkViewModel viewModel);
+        Task<IEnumerable<LinkViewModel>> GetAllLinks();
+        Task<ReplaceOneResult> UpdateLinkDocument(string id, LinkViewModel viewModel);
+        Task<ReplaceOneResult> UpdateLink(string id, LinkViewModel viewModel);
         Task<DeleteResult> RemoveLink(string id);
-
         Task<DeleteResult> RemoveAllLinks();
     }
 }

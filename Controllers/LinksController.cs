@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using KinderKulturServer.Contracts;
 using KinderKulturServer.Infrastructure;
 using KinderKulturServer.Models;
-using KinderKulturServer.Models.Entities;
 using KinderKulturServer.Repositories.Links;
 using KinderKulturServer.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -39,7 +38,7 @@ namespace KinderKulturServer.Controller
         [AllowAnonymous]    
         [NoCache]
         [HttpGet]
-        public Task<IEnumerable<Link>> Get()
+        public Task<IEnumerable<LinkViewModel>> Get()
         {
             _logger.LogInfo("Here is info message from our values controller.");
             _logger.LogDebug("Here is debug message from our values controller.");
@@ -48,63 +47,44 @@ namespace KinderKulturServer.Controller
             return GetAllLinksInternal();
         }
 
-        private async Task<IEnumerable<Link>> GetAllLinksInternal()
+        private async Task<IEnumerable<LinkViewModel>> GetAllLinksInternal()
         {
             return await _linksRepository.GetAllLinks();
         }
 
-
-        /// <summary>
-        /// Gets a Link
-        /// </summary>
-        /// <remarks>
-        /// /api/vx/Links/Id
-        /// </remarks>
-        /// <param name="id"></param>
-        /// <returns>A Link</returns>
-        /// <response code="200">Returns the Link</response>
-        /// <response code="400">If Link not found</response>  
         [ProducesResponseType(400)]         // BadRequest
         [ProducesResponseType(200)]         // OK
         [HttpGet("{id}", Name = nameof(GetLink))]
-        public async Task<ActionResult<Link>> GetLink(string id)
+        public async Task<ActionResult<LinkViewModel>> GetLink(string id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var link = await (_linksRepository.GetLink(id));
+            var viewModel = await (_linksRepository.GetLink(id));
 
-            return base.Ok(link);
+            return base.Ok(viewModel);
         }
 
         [ProducesResponseType(400)]         // BadRequest
         [ProducesResponseType(201)]         // Created
         [HttpPost]                          // POST api/links
-        public async Task<ActionResult<Link>>CreateLink([FromBody] LinkViewModel value)
+        public async Task<ActionResult<LinkViewModel>>CreateLink([FromBody] LinkViewModel viewModel)
         {
-            if (value == null)
+            if (viewModel == null)
                 return base.BadRequest();
                 
-            var newLink = new Link()
-            {
-                name = value.name,
-                title = value.title,
-                desc = value.desc,
-                url = value.url,
-                urldesc = value.urldesc
-            };
 
-            await (_linksRepository.AddLink(newLink));
+            await (_linksRepository.AddLink(viewModel));
 
-            return base.CreatedAtRoute(nameof(GetLink), new { id = newLink.Id }, newLink);
+            return base.CreatedAtRoute(nameof(GetLink), new { id = viewModel.Id }, viewModel);
         }
 
         [ProducesResponseType(204)]         // NoContent
         [HttpPut("{id}")]                   // PUT api/links/5
-        public IActionResult Update(string id, [FromBody] Link value)
+        public IActionResult Update(string id, [FromBody] LinkViewModel viewModel)
         {
 
-            _linksRepository.UpdateLinkDocument(id, value);
+            _linksRepository.UpdateLinkDocument(id, viewModel);
             return base.NoContent();
         }
 
@@ -125,17 +105,17 @@ namespace KinderKulturServer.Controller
         [ProducesResponseType(400)]         // BadRequest
         [ProducesResponseType(200)]         // OK
         [HttpPatch("{id:int}")]             // POST api/links
-        public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<Link> patchDoc)
+        public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<LinkViewModel> patchDoc)
         {
             if (patchDoc == null)
                 return base.BadRequest();
 
-            Task<Link> existingEntity = _linksRepository.GetLink(id.ToString());
+            Task<LinkViewModel> existingEntity = _linksRepository.GetLink(id.ToString());
 
             if (existingEntity == null)
                 return base.NotFound();
 
-            Task<Link> link = existingEntity;
+            Task<LinkViewModel> link = existingEntity;
             patchDoc.ApplyTo(link.Result, ModelState);
 
             var result = _linksRepository.UpdateLink(id.ToString(), link.Result);
