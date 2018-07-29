@@ -13,7 +13,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using NLog.Extensions.Logging;
 
-namespace KinderKulturServer.Controller
+namespace KinderKulturServer.Controllers
 {
     [Authorize(Policy = "ApiUser")]
     [ApiVersion("1.0")]
@@ -22,13 +22,13 @@ namespace KinderKulturServer.Controller
     [ApiController]
     public class LinksController : ControllerBase
     {
-        private readonly ILinkRepository _linksRepository;
+        private readonly IRepositoryWrapper _repoWrapper;
         private readonly ClaimsPrincipal _caller;
         private ILoggerManager _logger;
 
-        public LinksController(ILinkRepository linksRepository, ILoggerManager logger, IHttpContextAccessor httpContextAccessor)
+        public LinksController(IRepositoryWrapper repoWrapper, ILoggerManager logger, IHttpContextAccessor httpContextAccessor)
         {
-            _linksRepository = linksRepository;
+            _repoWrapper = repoWrapper;
             _logger = logger;
             _caller = httpContextAccessor.HttpContext.User;
         }
@@ -47,7 +47,7 @@ namespace KinderKulturServer.Controller
 
         private async Task<IEnumerable<LinkViewModel>> GetAllLinksInternal()
         {
-            return await _linksRepository.GetAllLinks();
+            return await _repoWrapper.Links.FindAllAsync();
         }
 
         [ProducesResponseType(400)]         // BadRequest
@@ -58,7 +58,7 @@ namespace KinderKulturServer.Controller
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var viewModel = await (_linksRepository.GetLink(id));
+            var viewModel = await (_repoWrapper.Links.FindByIdAsync(id));
 
             return base.Ok(viewModel);
         }
@@ -72,7 +72,7 @@ namespace KinderKulturServer.Controller
                 return base.BadRequest();
                 
 
-            await (_linksRepository.AddLink(viewModel));
+            await (_repoWrapper.Links.AddModel(viewModel));
 
             return base.CreatedAtRoute(nameof(GetLink), new { id = viewModel.Id }, viewModel);
         }
@@ -82,7 +82,7 @@ namespace KinderKulturServer.Controller
         public IActionResult Update(string id, [FromBody] LinkViewModel viewModel)
         {
 
-            _linksRepository.UpdateLinkDocument(id, viewModel);
+            _repoWrapper.Links.UpdateDbDocument(id, viewModel);
             return base.NoContent();
         }
 
@@ -91,11 +91,11 @@ namespace KinderKulturServer.Controller
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var link = _linksRepository.GetLink(id);
+            var link = _repoWrapper.Links.FindByIdAsync(id);
             if (link == null)
                 return base.NotFound();
             
-            _linksRepository.RemoveLink(id);
+            _repoWrapper.Links.RemoveModel(id);
             return base.NoContent();
         }
 
@@ -108,7 +108,7 @@ namespace KinderKulturServer.Controller
             if (patchDoc == null)
                 return base.BadRequest();
 
-            Task<LinkViewModel> existingEntity = _linksRepository.GetLink(id.ToString());
+            Task<LinkViewModel> existingEntity = _repoWrapper.Links.FindByIdAsync(id.ToString());
 
             if (existingEntity == null)
                 return base.NotFound();
@@ -116,7 +116,7 @@ namespace KinderKulturServer.Controller
             Task<LinkViewModel> link = existingEntity;
             patchDoc.ApplyTo(link.Result, ModelState);
 
-            var result = _linksRepository.UpdateLink(id.ToString(), link.Result);
+            var result = _repoWrapper.Links.UpdateModel(id.ToString(), link.Result);
 
             return base.Ok(result.Result);
         }

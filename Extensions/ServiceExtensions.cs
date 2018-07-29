@@ -1,3 +1,5 @@
+using KinderKulturServer.Contracts;
+using KinderKulturServer.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KinderKulturServer.Extensions
@@ -14,6 +16,10 @@ namespace KinderKulturServer.Extensions
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
+        }
+        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }

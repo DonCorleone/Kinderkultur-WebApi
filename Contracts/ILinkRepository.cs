@@ -10,12 +10,12 @@ namespace KinderKulturServer.Contracts
 {
     public interface ILinkRepository
     {
-        Task<LinkViewModel> GetLink(string id);
-        Task AddLink(LinkViewModel viewModel);
-        Task<IEnumerable<LinkViewModel>> GetAllLinks();
-        Task<ReplaceOneResult> UpdateLinkDocument(string id, LinkViewModel viewModel);
-        Task<ReplaceOneResult> UpdateLink(string id, LinkViewModel viewModel);
-        Task<DeleteResult> RemoveLink(string id);
-        Task<DeleteResult> RemoveAllLinks();
+        Task<LinkViewModel> FindByIdAsync(string id);
+        Task AddModel(LinkViewModel viewModel);
+        Task<IEnumerable<LinkViewModel>> FindAllAsync();
+        Task<ReplaceOneResult> UpdateDbDocument(string id, LinkViewModel viewModel);
+        Task<ReplaceOneResult> UpdateModel(string id, LinkViewModel viewModel);
+        Task<DeleteResult> RemoveModel(string id);
+        Task<DeleteResult> RemoveAllModels();
     }
 }

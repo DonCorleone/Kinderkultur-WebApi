@@ -101,7 +101,7 @@ namespace KinderKulturServer
             services.AddScoped<MongoDBContext>();
 
             // Dependency Injection MongoDb Repo
-            services.AddTransient<ILinkRepository, LinkRepository>();
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();
 
