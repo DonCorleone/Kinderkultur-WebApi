@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace KinderKulturServer.Controllers
             _logger.LogDebug("Here is debug message from our values controller.");
             _logger.LogWarn("Here is warn message from our values controller.");
             _logger.LogError("Here is error message from our values controller.");
-            return GetAllLinksInternal();
+            return GetAllLinksInternal();            
         }
 
         private async Task<IEnumerable<LinkViewModel>> GetAllLinksInternal()
@@ -55,8 +56,6 @@ namespace KinderKulturServer.Controllers
         [HttpGet("{id}", Name = nameof(GetLink))]
         public async Task<ActionResult<LinkViewModel>> GetLink(string id)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
 
             var viewModel = await (_repoWrapper.Links.FindByIdAsync(id));
 
