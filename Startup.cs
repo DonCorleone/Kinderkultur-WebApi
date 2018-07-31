@@ -48,12 +48,7 @@ namespace KinderKulturServer
             LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
             // Config Files
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional : true, reloadOnChange : true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional : true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = env.ConfigureConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -63,23 +58,13 @@ namespace KinderKulturServer
             services.ConfigureCors();
 
             // Add framework services.
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            services.ConfigureCookies();
 
             // .NET Core WebApi functionality
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.SuppressConsumesConstraintForFormFileParameters = true;
-                options.SuppressInferBindingSourcesForParameters = true;
-                options.SuppressModelStateInvalidFilter = true;
-            });
+            services.ConfigureApiBehavior();
 
             // API Versioning 
             services.AddApiVersioning();
@@ -87,16 +72,10 @@ namespace KinderKulturServer
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
             // Register MariaDb Context.
-            services.AddDbContext<MariaDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly("AngularWebpackVisualStudio")));
+            services.ConfigureMariaDb(Configuration);
 
             // MongoDB Connection Information
-            services.Configure<Settings>(options =>
-            {
-                options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
-                options.Database = Configuration.GetSection("MongoConnection:Database").Value;
-            });
+            services.ConfigureMongoDb(Configuration);
 
             // Register MongoDB Context
             services.AddScoped<MongoDBContext>();
@@ -114,6 +93,7 @@ namespace KinderKulturServer
             services.ConfigureAuthentication(Configuration, _signingKey);
 
             services.AddAutoMapper();
+
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
@@ -126,7 +106,9 @@ namespace KinderKulturServer
             app.UseCors("AllowAllOrigins");
 
             app.UseDefaultFiles();
+
             app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
 
             app.UseCookiePolicy();
@@ -135,18 +117,12 @@ namespace KinderKulturServer
 
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
-            
 
             app.ConfigureCustomExceptionHandler();
 
             app.ConfigureSwagger();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.ConfigureRouting();
         }
     }
 }

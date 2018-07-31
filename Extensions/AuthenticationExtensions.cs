@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using KinderKulturServer.Data;
 using KinderKulturServer.Helpers;
 using KinderKulturServer.Models;
@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace KinderKulturServer.Extensions
 {
-    public static class AuthenticationExtension
+    public static class AuthenticationExtensions
     {
         public static void ConfigureAuthentication(this IServiceCollection services, IConfigurationRoot configuration, SymmetricSecurityKey signingKey){
 

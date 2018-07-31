@@ -5,7 +5,7 @@ using NSwag.SwaggerGeneration.Processors.Security;
 
 namespace KinderKulturServer.Extensions
 {
-    public static class SwaggerExtension
+    public static class SwaggerExtensions
     {
         public static void ConfigureSwagger(this IApplicationBuilder app){
             app.UseSwaggerUi3WithApiExplorer(settings =>
