@@ -28,6 +28,10 @@ Application-Server built on .NET Core 2.1 for Kinderkultur.ch Pet - Project
 
 ### Maria DB
 
-Start Docker
+#### Create Docker Container
 
-    docker start 5a0511713f76
+docker run --name mariadb -e MYSQL_ROOT_PASSWORD=rootpwd -p 3306:3306 -d mariadb
+
+#### Init
+
+dotnet ef database update 20180323185657_initial --context MariaDbContext
