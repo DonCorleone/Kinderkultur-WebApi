@@ -66,6 +66,12 @@ namespace KinderKulturServer
 
             services.ConfigureApiBehavior();
 
+            // ToDo : ev. wieder rein fuer Docker
+            // services.AddHttpsRedirection(options =>
+            // {
+            //     options.HttpsPort = 5001;
+            // }); 
+
             // API Versioning 
             services.AddApiVersioning();
 
