@@ -9,6 +9,7 @@ using KinderKulturServer.Auth;
 using KinderKulturServer.Contracts;
 using KinderKulturServer.Data;
 using KinderKulturServer.Extensions;
+using KinderKulturServer.Handler;
 using KinderKulturServer.Helpers;
 using KinderKulturServer.Models;
 using KinderKulturServer.Models.Entities;
@@ -88,6 +89,10 @@ namespace KinderKulturServer
 
             // Dependency Injection MongoDb Repo
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+
+            services.AddTransient<IImageHandler, ImageHandler>();
+            services.AddTransient<ImageWriter.Interface.IImageWriter, 
+                                  ImageWriter.Classes.ImageWriter>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();
 
