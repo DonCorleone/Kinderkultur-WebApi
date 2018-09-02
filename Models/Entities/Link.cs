@@ -22,8 +22,11 @@ namespace KinderKulturServer.Models.Entities
         [BsonElement("url")]
         public string url {get;set;}
         
-         [BsonElement("urldesc")]
+        [BsonElement("urldesc")]
         public string urldesc {get;set;}
+
+        [BsonElement("imagename")]
+        public string imagename {get;set;}
 
         public string hostName {get;}
     }

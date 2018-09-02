@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using KinderKulturServer.Handler;
 using Microsoft.AspNetCore.Http;
@@ -21,7 +22,7 @@ namespace KinderKulturServer.Controllers
 		/// </summary>
 		/// <param name="file"></param>
 		/// <returns></returns>
-		public async Task<IActionResult> UploadImage(IFormFile file)
+		public async Task<IActionResult> UploadImage(IEnumerable<IFormFile> file, string id)
 		{
 			return await _imageHandler.UploadImage(file);
 		}

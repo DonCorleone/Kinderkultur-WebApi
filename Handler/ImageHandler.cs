@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using ImageWriter.Interface;
 using Microsoft.AspNetCore.Hosting;
@@ -9,7 +11,7 @@ namespace KinderKulturServer.Handler
 {
     public interface IImageHandler
     {
-        Task<IActionResult> UploadImage(IFormFile file);
+        Task<IActionResult> UploadImage(IEnumerable<IFormFile> file);
     }
 
     public class ImageHandler : IImageHandler
@@ -23,10 +25,15 @@ namespace KinderKulturServer.Handler
             this._appEnvironment = appEnvironment;
         }
 
-        public async Task<IActionResult> UploadImage(IFormFile file)
+        public async Task<IActionResult> UploadImage(IEnumerable<IFormFile> files)
         {
-            var result = await _imageWriter.UploadImage(file, _appEnvironment.WebRootPath + "/images/");
-            return new ObjectResult(JsonConvert.SerializeObject(result));
+            var result = new StringBuilder();
+            foreach (var file in files)
+            {
+                result.Append(await _imageWriter.UploadImage(file, _appEnvironment.WebRootPath + "/images/"));
+   
+            }
+             return new ObjectResult(JsonConvert.SerializeObject(result.ToString()));
         }
     }
 }

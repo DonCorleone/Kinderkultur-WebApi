@@ -9,5 +9,6 @@ namespace KinderKulturServer.ViewModels
       public string url { get; set; }
       public string urldesc { get; set; }
       public string hostName { get; }
+      public string imagename { get; }
    }
 }
