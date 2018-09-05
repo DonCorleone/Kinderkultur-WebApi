@@ -22,7 +22,7 @@ namespace KinderKulturServer.Controllers
 		/// </summary>
 		/// <param name="file"></param>
 		/// <returns></returns>
-		public async Task<IActionResult> UploadImage(IEnumerable<IFormFile> file, string id)
+		public async Task<IActionResult> UploadImage(IEnumerable<IFormFile> file)
 		{
 			return await _imageHandler.UploadImage(file);
 		}
