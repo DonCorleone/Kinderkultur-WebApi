@@ -105,6 +105,8 @@ namespace KinderKulturServer
 
             services.AddAutoMapper();
 
+            services.AddSignalR();
+
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
@@ -132,6 +134,8 @@ namespace KinderKulturServer
             app.ConfigureCustomExceptionHandler();
 
             app.ConfigureSwagger();
+
+            app.ConfigureSignalR();
 
             app.ConfigureRouting();
         }
