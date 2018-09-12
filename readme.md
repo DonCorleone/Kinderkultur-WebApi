@@ -4,6 +4,16 @@
 
 Application-Server built on .NET Core 2.1 for Kinderkultur.ch Pet - Project
 
+## StartScript
+
+### Make executable
+
+    chmod 700 startServer
+
+### Start Environment
+
+    ./startServer
+
 ## Authorization
 
 [Idee](https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-2.1)
@@ -39,4 +49,4 @@ dotnet ef database update 20180323185657_initial --context MariaDbContext
 ## HTTPS
 
 To generate a developer certificate run 'dotnet dev-certs https'. To trust the certificate (Windows and macOS only) run 'dotnet dev-certs https --trust'.
-For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.'
+For more information on configuring HTTPS see [https://go.microsoft.com](https://go.microsoft.com/fwlink/?linkid=848054)

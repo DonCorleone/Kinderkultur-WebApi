@@ -1,0 +1,3 @@
+#!/bin/bash
+docker stop mariadbKinderkultur
+docker stop mongodbKinderkultur
