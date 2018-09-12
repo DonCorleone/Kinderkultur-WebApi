@@ -35,3 +35,8 @@ docker run --name mariadb -e MYSQL_ROOT_PASSWORD=rootpwd -p 3306:3306 -d mariadb
 #### Init
 
 dotnet ef database update 20180323185657_initial --context MariaDbContext
+
+## HTTPS
+
+To generate a developer certificate run 'dotnet dev-certs https'. To trust the certificate (Windows and macOS only) run 'dotnet dev-certs https --trust'.
+For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.'
