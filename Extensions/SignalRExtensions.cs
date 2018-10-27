@@ -1,4 +1,4 @@
-using KinderKulturServer.Hubs;
+using KinderKulturServer.SignalRHubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
