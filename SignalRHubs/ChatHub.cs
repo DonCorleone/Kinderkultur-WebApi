@@ -13,7 +13,7 @@ namespace KinderKulturServer.SignalRHubs
 
       public Task Send(string data)
       {
-         return Clients.All.SendAsync("Send", data);
+         return Clients.All.SendAsync("Send", this.Context.ConnectionId + ": "  + data);
       }
    }
 }
