@@ -27,14 +27,20 @@ namespace KinderKulturServer.Controllers
         private readonly ClaimsPrincipal _caller;
         private ILoggerManager _logger;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="repoWrapper">DI Data-Repositories</param>
+        /// <param name="logger">DI NLog</param>
+        /// <param name="httpContextAccessor">DI HTTP Context</param>
         public LinksController(IRepositoryWrapper repoWrapper, ILoggerManager logger, IHttpContextAccessor httpContextAccessor)
         {
             _repoWrapper = repoWrapper;
             _logger = logger;
             _caller = httpContextAccessor.HttpContext.User;
         }
-    
-        [AllowAnonymous]    
+
+        [AllowAnonymous]
         [NoCache]
         [HttpGet]
         public Task<IEnumerable<LinkViewModel>> Get()
@@ -43,7 +49,7 @@ namespace KinderKulturServer.Controllers
             _logger.LogDebug("Here is debug message from our values controller.");
             _logger.LogWarn("Here is warn message from our values controller.");
             _logger.LogError("Here is error message from our values controller.");
-            return GetAllLinksInternal();            
+            return GetAllLinksInternal();
         }
 
         private async Task<IEnumerable<LinkViewModel>> GetAllLinksInternal()
@@ -65,11 +71,11 @@ namespace KinderKulturServer.Controllers
         [ProducesResponseType(400)]         // BadRequest
         [ProducesResponseType(201)]         // Created
         [HttpPost]                          // POST api/links
-        public async Task<ActionResult<LinkViewModel>>CreateLink([FromBody] LinkViewModel viewModel)
+        public async Task<ActionResult<LinkViewModel>> CreateLink([FromBody] LinkViewModel viewModel)
         {
             if (viewModel == null)
                 return base.BadRequest();
-                
+
 
             await (_repoWrapper.Links.AddModel(viewModel));
 
@@ -93,7 +99,7 @@ namespace KinderKulturServer.Controllers
             var link = _repoWrapper.Links.FindByIdAsync(id);
             if (link == null)
                 return base.NotFound();
-            
+
             _repoWrapper.Links.RemoveModel(id);
             return base.NoContent();
         }

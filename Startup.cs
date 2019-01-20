@@ -36,13 +36,21 @@ using NSwag.SwaggerGeneration.Processors.Security;
 
 namespace KinderKulturServer
 {
+    /// <summary>
+    /// .NET Core Boot Class
+    /// </summary>
     public class Startup
     {
-
-        private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // todo: get this from somewhere secure
+        private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; // ToDo: get this from somewhere secure
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
+
+        // Member var for Configuration 
         public IConfigurationRoot Configuration { get; }
 
+        /// <summary>
+        /// Applications Startup Routine
+        /// </summary>
+        /// <param name="env"></param>
         public Startup(IHostingEnvironment env)
         {
             // Logging
@@ -52,7 +60,10 @@ namespace KinderKulturServer
             Configuration = env.ConfigureConfiguration();
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             // Add service and create Policy with options 
@@ -91,52 +102,77 @@ namespace KinderKulturServer
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
             services.AddTransient<IImageHandler, ImageHandler>();
-            services.AddTransient<ImageWriter.Interface.IImageWriter, 
+            services.AddTransient<ImageWriter.Interface.IImageWriter,
                                   ImageWriter.Classes.ImageWriter>();
 
+            // JWT Singleton 
             services.AddSingleton<IJwtFactory, JwtFactory>();
 
             // Register the ConfigurationBuilder instance of FacebookAuthSettings
             services.Configure<FacebookAuthSettings>(Configuration.GetSection(nameof(FacebookAuthSettings)));
 
+            // HTTP Context
             services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
+            // Authentication
             services.ConfigureAuthentication(Configuration, _signingKey);
 
+            // DI for Automapper
             services.AddAutoMapper();
 
+            // DI for Signal R
             services.AddSignalR();
 
-            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
+            // MVC Builder
+            services
+                .AddMvc()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <param name="logger"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerManager logger)
         {
 
+            // Authentication
             app.UseAuthentication();
 
+            // Cross Domain Requests
             app.UseCors("AllowAllOrigins");
 
+            // Current Path
             app.UseDefaultFiles();
 
+            // Force HTTPS
             app.UseHttpsRedirection();
-            
+
+            // Static File Serve
             app.UseStaticFiles();
 
+            // Cookies
             app.UseCookiePolicy();
 
+            // Cross Domain Request Part 2
             app.UseCors("CorsPolicy");
 
+            // Debug Info for Exceptions
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            // Custom Exceptions
             app.ConfigureCustomExceptionHandler();
 
+            // Swagger
             app.ConfigureSwagger();
 
+            // Signal R
             app.ConfigureSignalR();
 
+            // Adds Routing
             app.ConfigureRouting();
         }
     }

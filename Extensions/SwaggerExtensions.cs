@@ -5,9 +5,17 @@ using NSwag.SwaggerGeneration.Processors.Security;
 
 namespace KinderKulturServer.Extensions
 {
+    /// <summary>
+    /// Swagger Config
+    /// </summary>
     public static class SwaggerExtensions
     {
-        public static void ConfigureSwagger(this IApplicationBuilder app){
+        /// <summary>
+        /// Configurate Swagger UI
+        /// </summary>
+        /// <param name="app"></param>
+        public static void ConfigureSwagger(this IApplicationBuilder app)
+        {
             app.UseSwaggerUi3WithApiExplorer(settings =>
             {
                 settings.DocExpansion = "list";
@@ -37,9 +45,9 @@ namespace KinderKulturServer.Extensions
                     new SwaggerSecurityScheme
                     {
                         Type = SwaggerSecuritySchemeType.ApiKey,
-                            Name = "Authorization",
-                            Description = "Copy 'Bearer ' + valid JWT token into field",
-                            In = SwaggerSecurityApiKeyLocation.Header,
+                        Name = "Authorization",
+                        Description = "Copy 'Bearer ' + valid JWT token into field",
+                        In = SwaggerSecurityApiKeyLocation.Header,
                     }
                 ));
             });

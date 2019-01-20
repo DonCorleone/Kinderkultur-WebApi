@@ -9,31 +9,46 @@ using Newtonsoft.Json;
 
 namespace KinderKulturServer.Handler
 {
+    /// <summary>
+    /// Client Side Image Handler Interface
+    /// </summary>
     public interface IImageHandler
     {
         Task<IActionResult> UploadImage(IEnumerable<IFormFile> file);
     }
 
+    /// <summary>
+    /// Client Side Image Handler
+    /// </summary>
     public class ImageHandler : IImageHandler
     {
         private readonly IImageWriter _imageWriter;
         private readonly IHostingEnvironment _appEnvironment;
-
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="imageWriter"></param>
+        /// <param name="appEnvironment"></param>
         public ImageHandler(IImageWriter imageWriter, IHostingEnvironment appEnvironment)
         {
             this._imageWriter = imageWriter;
             this._appEnvironment = appEnvironment;
         }
 
+        /// <summary>
+        /// Upload Image Request
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
         public async Task<IActionResult> UploadImage(IEnumerable<IFormFile> files)
         {
             var result = new StringBuilder();
             foreach (var file in files)
             {
                 result.Append(await _imageWriter.UploadImage(file, _appEnvironment.WebRootPath + "/images/"));
-   
+
             }
-             return new ObjectResult(JsonConvert.SerializeObject(result.ToString()));
+            return new ObjectResult(JsonConvert.SerializeObject(result.ToString()));
         }
     }
 }

@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 
 namespace KinderKulturServer.Helpers
 {
+    /// <summary>
+    /// JWT Token Helpers
+    /// </summary>
     public class Tokens
     {
         public static async Task<string> GenerateJwt(ClaimsIdentity identity, IJwtFactory jwtFactory, string userName, JwtIssuerOptions jwtOptions, JsonSerializerSettings serializerSettings)

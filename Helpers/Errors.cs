@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace KinderKulturServer.Helpers
 {
+    /// <summary>
+    /// Error Handler
+    /// </summary>
     public static class Errors
     {
         public static ModelStateDictionary AddErrorsToModelState(IdentityResult identityResult, ModelStateDictionary modelState)

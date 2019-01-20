@@ -1,6 +1,7 @@
 ﻿
 namespace KinderKulturServer.Helpers
 {
+    // JWT Constants
     public static class Constants
     {
         public static class Strings

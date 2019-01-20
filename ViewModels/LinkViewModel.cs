@@ -1,5 +1,8 @@
 namespace KinderKulturServer.ViewModels
 {
+   /// <summary>
+   /// Link ViewModel
+   /// </summary>
    public class LinkViewModel
    {
       public string Id { get; set; }

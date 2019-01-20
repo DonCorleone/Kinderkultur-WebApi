@@ -13,7 +13,14 @@ namespace KinderKulturServer.Extensions
 {
     public static class AuthenticationExtensions
     {
-        public static void ConfigureAuthentication(this IServiceCollection services, IConfigurationRoot configuration, SymmetricSecurityKey signingKey){
+        /// <summary>
+        /// Authentication Config
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="signingKey"></param>
+        public static void ConfigureAuthentication(this IServiceCollection services, IConfigurationRoot configuration, SymmetricSecurityKey signingKey)
+        {
 
             // jwt wire up
             // Get options from app settings
@@ -58,7 +65,7 @@ namespace KinderKulturServer.Extensions
             // api user claim policy
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("ApiUser", policy => 
+                options.AddPolicy("ApiUser", policy =>
                     policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
             });
             // add identity
@@ -71,7 +78,7 @@ namespace KinderKulturServer.Extensions
                 o.Password.RequireNonAlphanumeric = false;
                 o.Password.RequiredLength = 6;
             });
-            builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);            
+            builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);
             builder.AddEntityFrameworkStores<MariaDbContext>().AddDefaultTokenProviders();
         }
     }

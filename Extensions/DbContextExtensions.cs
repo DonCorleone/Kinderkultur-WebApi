@@ -9,6 +9,11 @@ namespace KinderKulturServer.Extensions
    public static class DbContextExtensions
    {
 
+      /// <summary>
+      /// DI for Mongo DB Connection
+      /// </summary>
+      /// <param name="services"></param>
+      /// <param name="configuration"></param>
       public static void ConfigureMongoDb(this IServiceCollection services, IConfiguration configuration)
       {
          services.Configure<Settings>(options =>
@@ -18,6 +23,11 @@ namespace KinderKulturServer.Extensions
          });
       }
 
+      /// <summary>
+      /// DI for Maria DB Connection
+      /// </summary>
+      /// <param name="services"></param>
+      /// <param name="configuration"></param>
       public static void ConfigureMariaDb(this IServiceCollection services, IConfiguration configuration)
       {
          services.AddDbContext<MariaDbContext>(options =>

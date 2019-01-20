@@ -4,15 +4,21 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KinderKulturServer.Extensions
 {
-   public static class SignalRExtenions
-   {
-
-      public static void ConfigureSignalR(this IApplicationBuilder app)
-      {
-         app.UseSignalR(routes =>
-         {
-            routes.MapHub<ChatHub>("/loopy");
-         });
-      }
-   }
+    /// <summary>
+    /// Signal R Config
+    /// </summary>
+    public static class SignalRExtensions
+    {
+        /// <summary>
+        /// Configurate Signal R
+        /// </summary>
+        /// <param name="app"></param>
+        public static void ConfigureSignalR(this IApplicationBuilder app)
+        {
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/loopy");
+            });
+        }
+    }
 }

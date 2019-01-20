@@ -6,11 +6,11 @@ namespace LoggerService
 {
     public class LoggerManager : ILoggerManager
     {
+        /// <summary>
+        /// NLogger
+        /// </summary>
+        /// <returns></returns>
         private static ILogger logger = LogManager.GetCurrentClassLogger();
-
-        public LoggerManager()
-        {
-        }
 
         public void LogDebug(string message)
         {

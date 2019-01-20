@@ -7,8 +7,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KinderKulturServer.Extensions
 {
+    /// <summary>
+    /// Dependency Injection for Services
+    /// </summary>
     public static class ServiceExtensions
     {
+
+        /// <summary>
+        /// DI Cors Policy
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureCors(this IServiceCollection services)
         {
             services.AddCors(options =>
@@ -20,11 +28,20 @@ namespace KinderKulturServer.Extensions
                     .AllowCredentials());
             });
         }
-        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
-        {
-            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-        }
 
+        // /// <summary>
+        // /// DI for Repositories
+        // /// </summary>
+        // /// <param name="services"></param>
+        // public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        // {
+        //     services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+        // }
+
+        /// <summary>
+        /// DI for Cookies
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureCookies(this IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
@@ -35,6 +52,10 @@ namespace KinderKulturServer.Extensions
             });
         }
 
+        /// <summary>
+        /// DI for API behavior
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureApiBehavior(this IServiceCollection services)
         {
             services.Configure<ApiBehaviorOptions>(options =>
