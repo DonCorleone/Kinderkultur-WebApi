@@ -15,12 +15,11 @@ using KinderKulturServer.Models;
 using KinderKulturServer.Models.Entities;
 using KinderKulturServer.Repositories;
 using LoggerService;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -74,7 +73,7 @@ namespace KinderKulturServer
 
             // .NET Core WebApi functionality
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);  // ToDo NetCore 2.2
 
             services.ConfigureApiBehavior();
 

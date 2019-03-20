@@ -22,10 +22,11 @@ namespace KinderKulturServer.Extensions
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
+                    builder => builder.WithOrigins() // ToDo NetCore 2.2
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowCredentials());
+                    //.AllowCredentials()
+                    );
             });
         }
 
