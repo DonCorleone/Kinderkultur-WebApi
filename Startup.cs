@@ -82,7 +82,14 @@ namespace KinderKulturServer
             // {
             //     options.HttpsPort = 5001;
             // }); 
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("https://localhost:8080").AllowAnyHeader();
+                });
+            });
             // API Versioning 
             services.AddApiVersioning();
 
@@ -127,6 +134,7 @@ namespace KinderKulturServer
                 .AddMvc()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -140,8 +148,6 @@ namespace KinderKulturServer
             // Authentication
             app.UseAuthentication();
 
-            // Cross Domain Requests
-            app.UseCors("AllowAllOrigins");
 
             // Current Path
             app.UseDefaultFiles();
@@ -155,8 +161,11 @@ namespace KinderKulturServer
             // Cookies
             app.UseCookiePolicy();
 
-            // Cross Domain Request Part 2
-            app.UseCors("CorsPolicy");
+            // // Cross Domain Request Part 2
+            // app.UseCors("CorsPolicy");
+
+
+            app.UseCors(MyAllowSpecificOrigins); 
 
             // Debug Info for Exceptions
             if (env.IsDevelopment())
