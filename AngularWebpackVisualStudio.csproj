@@ -26,6 +26,6 @@
       <Folder Include="wwwroot\images\" />
    </ItemGroup>
    <ItemGroup>
-      <ProjectReference Include="..\ImageWriter\ImageWriter.csproj" />
+      <ProjectReference Include="../Kinderkultur-Image-Writer/ImageWriter.csproj" />
    </ItemGroup>
 </Project>
