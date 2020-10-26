@@ -66,7 +66,17 @@ namespace KinderKulturServer
         public void ConfigureServices(IServiceCollection services)
         {
             // Add service and create Policy with options 
-            services.ConfigureCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder
+                        .WithOrigins("https://localhost:8080")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
             // Add framework services.
             services.ConfigureCookies();
@@ -82,14 +92,7 @@ namespace KinderKulturServer
             // {
             //     options.HttpsPort = 5001;
             // }); 
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyAllowSpecificOrigins,
-                builder =>
-                {
-                    builder.WithOrigins("https://localhost:8080").AllowAnyHeader();
-                });
-            });
+
             // API Versioning 
             services.AddApiVersioning();
 
