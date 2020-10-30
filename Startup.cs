@@ -1,37 +1,24 @@
 ﻿using System;
 using System.IO;
-using System.Net;
-using System.Reflection;
 using System.Text;
-using AutoMapper;
 using FluentValidation.AspNetCore;
 using KinderKulturServer.Auth;
 using KinderKulturServer.Contracts;
 using KinderKulturServer.Data;
 using KinderKulturServer.Extensions;
 using KinderKulturServer.Handler;
-using KinderKulturServer.Helpers;
 using KinderKulturServer.Models;
-using KinderKulturServer.Models.Entities;
 using KinderKulturServer.Repositories;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using NJsonSchema;
 using NLog;
-using NSwag;
-using NSwag.AspNetCore;
-using NSwag.SwaggerGeneration.Processors.Security;
 
 namespace KinderKulturServer
 {
@@ -50,13 +37,13 @@ namespace KinderKulturServer
         /// Applications Startup Routine
         /// </summary>
         /// <param name="env"></param>
-        public Startup(IHostingEnvironment env)
+        public Startup(IWebHostEnvironment env)
         {
             // Logging
             LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
             // Config Files
-            Configuration = env.ConfigureConfiguration();
+            // Configuration = env.;
         }
 
         /// <summary>
@@ -83,7 +70,7 @@ namespace KinderKulturServer
 
             // .NET Core WebApi functionality
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);  // ToDo NetCore 2.2
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);  // ToDo NetCore 2.2
 
             services.ConfigureApiBehavior();
 
@@ -126,8 +113,8 @@ namespace KinderKulturServer
             // Authentication
             services.ConfigureAuthentication(Configuration, _signingKey);
 
-            // DI for Automapper
-            services.AddAutoMapper();
+            // // DI for Automapper
+            // services.AddAutoMapper();
 
             // DI for Signal R
             services.AddSignalR();
@@ -145,7 +132,7 @@ namespace KinderKulturServer
         /// <param name="app"></param>
         /// <param name="env"></param>
         /// <param name="logger"></param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerManager logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
         {
 
             // Authentication
@@ -171,7 +158,7 @@ namespace KinderKulturServer
             app.UseCors(MyAllowSpecificOrigins); 
 
             // Debug Info for Exceptions
-            if (env.IsDevelopment())
+            if (env.EnvironmentName == "Development")
                 app.UseDeveloperExceptionPage();
 
             // Custom Exceptions

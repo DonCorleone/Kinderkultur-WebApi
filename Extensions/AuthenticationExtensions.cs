@@ -3,7 +3,6 @@ using KinderKulturServer.Data;
 using KinderKulturServer.Helpers;
 using KinderKulturServer.Models;
 using KinderKulturServer.Models.Entities;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,17 +49,18 @@ namespace KinderKulturServer.Extensions
                 ClockSkew = TimeSpan.Zero
             };
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            // ToDo .NET Core 3.0
+            //     services.AddAuthentication(options =>
+            // {
+                // options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                // options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
-            }).AddJwtBearer(configureOptions =>
-            {
-                configureOptions.ClaimsIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                configureOptions.TokenValidationParameters = tokenValidationParameters;
-                configureOptions.SaveToken = true;
-            });
+            // }).AddJwtBearer(configureOptions =>
+            // {
+            //     configureOptions.ClaimsIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
+            //     configureOptions.TokenValidationParameters = tokenValidationParameters;
+            //     configureOptions.SaveToken = true;
+            // });
 
             // api user claim policy
             services.AddAuthorization(options =>

@@ -1,10 +1,10 @@
 ﻿
 using KinderKulturServer.ViewModels.Validations;
-using FluentValidation.Attributes;
+using FluentValidation.Validators;
 
 namespace KinderKulturServer.ViewModels
 {
-    [Validator(typeof(CredentialsViewModelValidator))]
+    // ToDo .NET Core 3.0 [Validator(typeof(CredentialsViewModelValidator))]
     public class CredentialsViewModel
     {
         public string UserName { get; set; }

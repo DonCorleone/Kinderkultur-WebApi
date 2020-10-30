@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using KinderKulturServer.Contracts;
@@ -10,9 +8,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using NLog.Extensions.Logging;
 
 namespace KinderKulturServer.Controllers
 {
@@ -119,7 +114,7 @@ namespace KinderKulturServer.Controllers
                 return base.NotFound();
 
             Task<LinkViewModel> link = existingEntity;
-            patchDoc.ApplyTo(link.Result, ModelState);
+            patchDoc.ApplyTo(link.Result);
 
             var result = _repoWrapper.Links.UpdateModel(id.ToString(), link.Result);
 
