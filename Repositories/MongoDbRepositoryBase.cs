@@ -92,7 +92,7 @@ namespace KinderKulturServer.Repositories
             {
                 var tempId = ObjectId.Parse(id);
                 return await Collection
-                    .ReplaceOneAsync<UDbModel>(n => n.Id.Equals(tempId), dbModel, new UpdateOptions { IsUpsert = true });
+                    .ReplaceOneAsync<UDbModel>(n => n.Id.Equals(tempId), dbModel, new ReplaceOptions { IsUpsert = true });
             }
             catch (Exception ex)
             {

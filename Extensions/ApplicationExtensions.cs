@@ -11,11 +11,12 @@ namespace KinderKulturServer.Extensions
         /// <param name="app"></param>
         public static void ConfigureRouting(this IApplicationBuilder app)
         {
-            app.UseMvc(routes =>
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
+              //  endpoints.MapControllerRoute(
+              //      "default", "{controller=Home}/{action=Index}/{id?}");            
             });
         }
     }

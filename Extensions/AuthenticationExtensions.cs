@@ -49,7 +49,7 @@ namespace KinderKulturServer.Extensions
                 ClockSkew = TimeSpan.Zero
             };
 
-            // ToDo .NET Core 3.0
+            // ToDo .NET Core 3.0 https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-3.1&tabs=visual-studio
             //     services.AddAuthentication(options =>
             // {
                 // options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -62,12 +62,12 @@ namespace KinderKulturServer.Extensions
             //     configureOptions.SaveToken = true;
             // });
 
-            // api user claim policy
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("ApiUser", policy =>
-                    policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
-            });
+            // ToDo .NET Core 3.0 api user claim policy
+            // services.AddAuthorization(options =>
+            // {
+            //     options.AddPolicy("ApiUser", policy =>
+            //         policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+            // });
             // add identity
             var builder = services.AddIdentityCore<AppUser>(o =>
             {

@@ -23,13 +23,13 @@ namespace KinderKulturServer.Handler
     public class ImageHandler : IImageHandler
     {
         private readonly IImageWriter _imageWriter;
-        private readonly IHostingEnvironment _appEnvironment;
+        private readonly IWebHostEnvironment _appEnvironment;
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="imageWriter"></param>
         /// <param name="appEnvironment"></param>
-        public ImageHandler(IImageWriter imageWriter, IHostingEnvironment appEnvironment)
+        public ImageHandler(IImageWriter imageWriter, IWebHostEnvironment appEnvironment)
         {
             this._imageWriter = imageWriter;
             this._appEnvironment = appEnvironment;

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace KinderKulturServer
 {
@@ -8,21 +9,16 @@ namespace KinderKulturServer
     /// </summary>
     public class Program
     {
-        /// <summary>
-        /// .NET Core Entry Method
-        /// </summary>
-        /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .ConfigureKestrel((context, options) =>
-        {
-            // Set properties and call methods on options // ToDo NetCore 2.2
-        });
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

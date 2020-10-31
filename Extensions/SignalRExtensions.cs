@@ -15,9 +15,9 @@ namespace KinderKulturServer.Extensions
         /// <param name="app"></param>
         public static void ConfigureSignalR(this IApplicationBuilder app)
         {
-            app.UseSignalR(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapHub<ChatHub>("/loopy");
+                endpoints.MapHub<ChatHub>("/loopy");
             });
         }
     }

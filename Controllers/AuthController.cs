@@ -14,9 +14,10 @@ using Newtonsoft.Json;
 namespace KinderKulturServer.Controllers
 {
 
-    [ApiController]
-    [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+   // [ApiController]
+   // [ApiVersion("1.0")]
+   // [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;

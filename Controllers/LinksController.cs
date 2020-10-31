@@ -11,11 +11,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KinderKulturServer.Controllers
 {
-    [Authorize(Policy = "ApiUser")]
-    [ApiVersion("1.0")]
-    [Produces("application/json")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+  //  [Authorize(Policy = "ApiUser")]
+  //  [ApiVersion("1.0")]
+   // [Produces("application/json")]
+  //  [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class LinksController : ControllerBase
     {
         private readonly IRepositoryWrapper _repoWrapper;

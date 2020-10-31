@@ -8,7 +8,7 @@ namespace KinderKulturServer.Extensions
     /// </summary>
     public static class HostingEnvironmentExtensions
     {
-        public static IConfigurationRoot ConfigureConfiguration(this IHostingEnvironment env)
+        public static IConfigurationRoot ConfigureConfiguration(this IWebHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)

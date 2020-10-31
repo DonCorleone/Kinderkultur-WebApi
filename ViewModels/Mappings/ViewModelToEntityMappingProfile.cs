@@ -9,8 +9,8 @@ namespace KinderKulturServer.ViewModels.Mappings
     {
         public ViewModelToEntityMappingProfile()
         {
-            CreateMap<RegistrationViewModel, AppUser>().ForMember(au => au.UserName, map => map.MapFrom(vm => vm.Email));
-            CreateMap<LinkViewModel, Link>();
+            CreateMap<AppUser, RegistrationViewModel>().ForMember(au => au.Email, map => map.MapFrom(vm => vm.UserName));
+            CreateMap<Link, LinkViewModel>();
         }
     }
 }
