@@ -16,10 +16,9 @@ using Newtonsoft.Json;
 namespace KinderKulturServer.Controllers
 {
 
-    //[ApiController]
-    //[ApiVersion("1.0")]
-    //[Route("api/v{version:apiVersion}/[controller]/[action]")]
-    [Route("api/[controller]")]
+    [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]/[action]")]
     public class ExternalAuthController : ControllerBase
     {
         private readonly MariaDbContext _appDbContext;

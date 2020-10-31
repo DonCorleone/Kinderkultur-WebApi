@@ -83,21 +83,21 @@ namespace KinderKulturServer
         //     // }); 
 
         //     // API Versioning 
-        //     services.AddApiVersioning();
+        ////     services.AddApiVersioning();
 
-        //     services.AddSingleton<ILoggerManager, LoggerManager>();
+        ////     services.AddSingleton<ILoggerManager, LoggerManager>();
 
         //     // Register MariaDb Context.
         //     services.ConfigureMariaDb(Configuration);
 
         //     // MongoDB Connection Information
-        //     services.ConfigureMongoDb(Configuration);
+        ////     services.ConfigureMongoDb(Configuration);
 
         //     // Register MongoDB Context
-        //     services.AddScoped<MongoDBContext>();
+        ////     services.AddScoped<MongoDBContext>();
 
         //     // Dependency Injection MongoDb Repo
-        //     services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+        ////     services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
         //     services.AddTransient<IImageHandler, ImageHandler>();
         //     services.AddTransient<ImageWriter.Interface.IImageWriter,
@@ -110,13 +110,13 @@ namespace KinderKulturServer
         //     services.Configure<FacebookAuthSettings>(Configuration.GetSection(nameof(FacebookAuthSettings)));
 
         //     // HTTP Context
-        //     services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
+        ////     services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
         //     // Authentication
         //     services.ConfigureAuthentication(Configuration, _signingKey);
 
         //     // // DI for Automapper
-        //     // services.AddAutoMapper();
+        ////     // services.AddAutoMapper();
 
         //     // DI for Signal R
         //     services.AddSignalR();
@@ -188,22 +188,19 @@ namespace KinderKulturServer
         {
             services.AddControllers();
 
-            // HTTP Context
             services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddSingleton<ILoggerManager, LoggerManager>();
 
-            // MongoDB Connection Information
             services.ConfigureMongoDb(Configuration);
 
-            // DI for AutoMapper
             services.AddAutoMapper(typeof(Startup));
 
-            // Register MongoDB Context
             services.AddScoped<MongoDBContext>();
 
-            // Dependency Injection MongoDb Repo
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+
+            services.AddApiVersioning();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

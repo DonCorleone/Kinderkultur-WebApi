@@ -11,10 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace KinderKulturServer.Controllers
 {
 
-    //[ApiController]
-    //[ApiVersion("1.0")]
-   // [Route("api/v{version:apiVersion}/[controller]")]
-    [Route("api/[controller]")]
+    [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AccountsController : ControllerBase
     {
         private readonly MariaDbContext _appDbContext;
