@@ -1,4 +1,7 @@
+
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using NSwag;
 using NSwag.AspNetCore;
 using NSwag.SwaggerGeneration.Processors.Security;
@@ -14,44 +17,40 @@ namespace KinderKulturServer.Extensions
         /// Configurate Swagger UI
         /// </summary>
         /// <param name="app"></param>
-        public static void ConfigureSwagger(this IApplicationBuilder app)
+        public static void ConfigureSwagger(this IServiceCollection services, IConfiguration configuration)
         {
-            // ToDo .NET Core 3.0
-        //     app.UseSwaggerUi3WithApiExplorer(settings =>
-        //     {
-        //         settings.DocExpansion = "list";
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    // document.Info.Version = "v1";
+                    // document.Info.Title = "kinderkultur.ch API";
+                    // document.Info.Description = "An advanced ASP.NET Core web API";
+                    // document.Info.TermsOfService = "None";
+                    // document.Info.Contact = new NSwag.OpenApiContact
+                    // {
+                    //     Name = "Linus Wieland",
+                    //     Email = "vitocorleone77@gmail.com",
+                    //     Url = "http://kinderkultur.ch"
+                    // };
+                    // document.Info.License = new NSwag.OpenApiLicense
+                    // {
+                    //     Name = "Use under LICX",
+                    //     Url = "https://example.com/license"
+                    // };
+                };
 
-        //         settings.PostProcess = document =>
-        //         {
-        //             document.Info.Version = "v1";
-        //             document.Info.Title = "kinderkultur.ch API";
-        //             document.Info.Description = "An advanced ASP.NET Core web API";
-        //             document.Info.TermsOfService = "None";
-        //             document.Info.Contact = new NSwag.SwaggerContact
-        //             {
-        //                 Name = "Linus Wieland",
-        //                 Email = "vitocorleone77@gmail.com",
-        //                 Url = "http://kinderkultur.ch"
-        //             };
-        //             document.Info.License = new NSwag.SwaggerLicense
-        //             {
-        //                 Name = "Use under LICX",
-        //                 Url = "https://example.com/license"
-        //             };
-        //         };
-
-        //         settings.GeneratorSettings.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT token"));
-
-        //         settings.GeneratorSettings.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT token",
-        //             new SwaggerSecurityScheme
-        //             {
-        //                 Type = SwaggerSecuritySchemeType.ApiKey,
-        //                 Name = "Authorization",
-        //                 Description = "Copy 'Bearer ' + valid JWT token into field",
-        //                 In = SwaggerSecurityApiKeyLocation.Header,
-        //             }
-        //         ));
-        //     });
+                // config.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT token"));
+                // config.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT token",
+                //     new SwaggerSecurityScheme
+                //     {
+                //         Type = SwaggerSecuritySchemeType.ApiKey,
+                //         Name = "Authorization",
+                //         Description = "Copy 'Bearer ' + valid JWT token into field",
+                //         In = SwaggerSecurityApiKeyLocation.Header,
+                //     }
+                // ));
+            });
         }
     }
 }

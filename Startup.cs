@@ -54,19 +54,6 @@ namespace KinderKulturServer
         // /// <param name="services"></param>
         // public void ConfigureServices(IServiceCollection services)
         // {
-        //     // Add service and create Policy with options 
-        //     services.AddCors(options =>
-        //     {
-        //         options.AddPolicy(MyAllowSpecificOrigins,
-        //         builder =>
-        //         {
-        //             builder
-        //                 .WithOrigins("https://localhost:8080")
-        //                 .AllowAnyHeader()
-        //                 .AllowAnyMethod();
-        //         });
-        //     });
-
         //     // Add framework services.
         //     services.ConfigureCookies();
 
@@ -82,26 +69,9 @@ namespace KinderKulturServer
         //     //     options.HttpsPort = 5001;
         //     // }); 
 
-        //     // API Versioning 
-        ////     services.AddApiVersioning();
-
-        ////     services.AddSingleton<ILoggerManager, LoggerManager>();
 
         //     // Register MariaDb Context.
         //     services.ConfigureMariaDb(Configuration);
-
-        //     // MongoDB Connection Information
-        ////     services.ConfigureMongoDb(Configuration);
-
-        //     // Register MongoDB Context
-        ////     services.AddScoped<MongoDBContext>();
-
-        //     // Dependency Injection MongoDb Repo
-        ////     services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-
-        // //     services.AddTransient<IImageHandler, ImageHandler>();
-        // //     services.AddTransient<ImageWriter.Interface.IImageWriter,
-        // //                           ImageWriter.Classes.ImageWriter>();
 
         //     // JWT Singleton 
         //     services.AddSingleton<IJwtFactory, JwtFactory>();
@@ -109,14 +79,8 @@ namespace KinderKulturServer
         //     // Register the ConfigurationBuilder instance of FacebookAuthSettings
         //     services.Configure<FacebookAuthSettings>(Configuration.GetSection(nameof(FacebookAuthSettings)));
 
-        //     // HTTP Context
-        ////     services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
         //     // Authentication
         //     services.ConfigureAuthentication(Configuration, _signingKey);
-
-        //     // // DI for Automapper
-        ////     // services.AddAutoMapper();
 
         //     // DI for Signal R
         //     services.AddSignalR();
@@ -144,11 +108,6 @@ namespace KinderKulturServer
         //     // Current Path
         //     app.UseDefaultFiles();
 
-        //     // Force HTTPS
-        //     app.UseHttpsRedirection();
-
-        //     // Static File Serve
-        //     app.UseStaticFiles();
 
         //     // Cookies
         //     app.UseCookiePolicy();
@@ -166,8 +125,7 @@ namespace KinderKulturServer
         //     // Custom Exceptions
         //     app.ConfigureCustomExceptionHandler();
 
-        //     // Swagger
-        //     app.ConfigureSwagger();
+
 
         //     // Signal R
         //     app.ConfigureSignalR();
@@ -217,6 +175,8 @@ namespace KinderKulturServer
                                   ImageWriter.Classes.ImageWriter>();
 
             services.AddApiVersioning();
+
+            services.ConfigureSwagger(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -232,6 +192,10 @@ namespace KinderKulturServer
             app.UseStaticFiles();
 
             app.UseCors(MyAllowSpecificOrigins); 
+
+            // Register the Swagger generator and the Swagger UI middlewares
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 
