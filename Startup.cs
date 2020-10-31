@@ -229,6 +229,8 @@ namespace KinderKulturServer
 
             app.UseHttpsRedirection();
 
+            app.UseStaticFiles();
+
             app.UseCors(MyAllowSpecificOrigins); 
 
             app.UseRouting();
