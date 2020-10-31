@@ -99,9 +99,9 @@ namespace KinderKulturServer
         //     // Dependency Injection MongoDb Repo
         ////     services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
-        //     services.AddTransient<IImageHandler, ImageHandler>();
-        //     services.AddTransient<ImageWriter.Interface.IImageWriter,
-        //                           ImageWriter.Classes.ImageWriter>();
+        // //     services.AddTransient<IImageHandler, ImageHandler>();
+        // //     services.AddTransient<ImageWriter.Interface.IImageWriter,
+        // //                           ImageWriter.Classes.ImageWriter>();
 
         //     // JWT Singleton 
         //     services.AddSingleton<IJwtFactory, JwtFactory>();
@@ -126,7 +126,7 @@ namespace KinderKulturServer
         //         .AddMvc()
         //         .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
         // }
-        // readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // /// <summary>
         // /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -187,6 +187,18 @@ namespace KinderKulturServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder
+                        .WithOrigins("https://localhost:8080")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
             services.TryAddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -200,6 +212,10 @@ namespace KinderKulturServer
 
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
+            services.AddTransient<IImageHandler, ImageHandler>();
+            services.AddTransient<ImageWriter.Interface.IImageWriter,
+                                  ImageWriter.Classes.ImageWriter>();
+
             services.AddApiVersioning();
         }
 
@@ -212,6 +228,8 @@ namespace KinderKulturServer
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(MyAllowSpecificOrigins); 
 
             app.UseRouting();
 
