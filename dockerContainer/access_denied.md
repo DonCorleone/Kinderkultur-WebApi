@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/41984399/denied-requested-access-to-the-resource-is-denied-docker
