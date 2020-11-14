@@ -1,10 +1,5 @@
-
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NSwag;
-using NSwag.AspNetCore;
-using NSwag.SwaggerGeneration.Processors.Security;
 
 namespace KinderKulturServer.Extensions
 {
@@ -19,10 +14,10 @@ namespace KinderKulturServer.Extensions
         /// <param name="app"></param>
         public static void ConfigureSwagger(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSwaggerDocument(config =>
-            {
-                config.PostProcess = document =>
-                {
+            // services.AddSwaggerDocument(config =>
+            // {
+            //     config.PostProcess = document =>
+            //     {
                     // document.Info.Version = "v1";
                     // document.Info.Title = "kinderkultur.ch API";
                     // document.Info.Description = "An advanced ASP.NET Core web API";
@@ -38,7 +33,7 @@ namespace KinderKulturServer.Extensions
                     //     Name = "Use under LICX",
                     //     Url = "https://example.com/license"
                     // };
-                };
+      //          };
 
                 // config.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT token"));
                 // config.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT token",
@@ -50,7 +45,7 @@ namespace KinderKulturServer.Extensions
                 //         In = SwaggerSecurityApiKeyLocation.Header,
                 //     }
                 // ));
-            });
+           // });
         }
     }
 }

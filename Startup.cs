@@ -1,26 +1,19 @@
-﻿using System;
-using System.IO;
-using System.Text;
-// using FluentValidation.AspNetCore;
-using KinderKulturServer.Auth;
+﻿// using FluentValidation.AspNetCore;
 using KinderKulturServer.Contracts;
 using KinderKulturServer.Data;
 using KinderKulturServer.Extensions;
 using KinderKulturServer.Handler;
-using KinderKulturServer.Models;
 using KinderKulturServer.Repositories;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.IdentityModel.Tokens;
-using NLog;
 using AutoMapper;
+using Microsoft.OpenApi.Models;
 
 namespace KinderKulturServer
 {
@@ -70,8 +63,6 @@ namespace KinderKulturServer
         //     // }); 
 
 
-        //     // Register MariaDb Context.
-        //     services.ConfigureMariaDb(Configuration);
 
         //     // JWT Singleton 
         //     services.AddSingleton<IJwtFactory, JwtFactory>();
@@ -168,7 +159,6 @@ namespace KinderKulturServer
 
             services.AddScoped<MongoDBContext>();
 
-            // Register MariaDb Context.
             services.ConfigureMariaDb(Configuration);
 
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
@@ -179,7 +169,10 @@ namespace KinderKulturServer
 
             services.AddApiVersioning();
 
-            services.ConfigureSwagger(Configuration);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -196,9 +189,8 @@ namespace KinderKulturServer
 
             app.UseCors(MyAllowSpecificOrigins); 
 
-            // Register the Swagger generator and the Swagger UI middlewares
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
 
             app.UseRouting();
 
