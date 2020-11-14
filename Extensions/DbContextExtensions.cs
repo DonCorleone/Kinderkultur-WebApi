@@ -31,7 +31,7 @@ namespace KinderKulturServer.Extensions
       public static void ConfigureMariaDb(this IServiceCollection services, IConfiguration configuration)
       {
          services.AddDbContext<MariaDbContext>(options =>
-            options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
+            options.UseMySql(configuration.GetConnectionString("DefaultConnection"),ServerVersion.FromString("10.2.13-mariadb"),
                b => b.MigrationsAssembly("AngularWebpackVisualStudio")));
       }
    }

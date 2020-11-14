@@ -168,6 +168,9 @@ namespace KinderKulturServer
 
             services.AddScoped<MongoDBContext>();
 
+            // Register MariaDb Context.
+            services.ConfigureMariaDb(Configuration);
+
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
             services.AddTransient<IImageHandler, ImageHandler>();
