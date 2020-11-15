@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Application-Server built on .NET Core 3.1 for Kinderkultur.ch Pet - Project
+Application-Server built on .NET 5.0 for Kinderkultur.ch Pet - Project
 
 ## StartScript
 
