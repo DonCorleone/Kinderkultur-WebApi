@@ -1,4 +1,4 @@
 #!/bin/bash
-docker start mariadbKinderkultur
-docker start mongodbKinderkultur
+# docker start mariadbKinderkultur
+# docker start mongodbKinderkultur
 dotnet run
